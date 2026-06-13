@@ -66,12 +66,12 @@ export function ServiceHero({
             <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
               {lead}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <LiquidMetalButton href="#offerte" size="lg">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <LiquidMetalButton href="#offerte" size="default">
                 Offerte aanvragen
                 <ArrowRight className="h-4 w-4" />
               </LiquidMetalButton>
-              <LiquidMetalButton href={contact.phoneHref} size="lg">
+              <LiquidMetalButton href={contact.phoneHref} size="default">
                 <Phone className="h-4 w-4" />
                 Bel direct
               </LiquidMetalButton>
