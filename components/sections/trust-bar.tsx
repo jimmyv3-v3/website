@@ -9,7 +9,7 @@ export function TrustBar() {
     >
       <div className="container py-16 sm:py-20">
         <RevealGroup
-          className="grid gap-px overflow-hidden sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-2 gap-px overflow-hidden lg:grid-cols-4"
           stagger={0.08}
           delayChildren={0.05}
         >
@@ -17,7 +17,7 @@ export function TrustBar() {
             <RevealItem
               key={usp.title}
               as="li"
-              className="group relative list-none px-6 py-8"
+              className="group relative list-none px-4 py-6 sm:px-6 sm:py-8"
             >
               {/* Soft column divider — right edge, hidden after last item */}
               {i < usps.length - 1 && (
@@ -42,7 +42,7 @@ export function TrustBar() {
               <h3 className="font-display text-[0.9rem] font-medium tracking-tight text-foreground">
                 {usp.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-2 text-[0.8rem] leading-relaxed text-muted-foreground sm:text-sm">
                 {usp.body}
               </p>
             </RevealItem>

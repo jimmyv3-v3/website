@@ -1,6 +1,7 @@
 import { SiteHeader } from "@/components/sections/site-header";
 import { Hero } from "@/components/sections/hero";
 import { Clients } from "@/components/sections/clients";
+import { SegmentAccordion } from "@/components/sections/segment-accordion";
 import { Metrics } from "@/components/sections/metrics";
 import { TrustBar } from "@/components/sections/trust-bar";
 import { ServiceTicker } from "@/components/sections/service-ticker";
@@ -67,6 +68,12 @@ export default function Home() {
       <main>
         <Hero />
         <Clients />
+        {/* Doelgroepen onder de logo's op mobiel; op desktop staan ze in de hero */}
+        <section aria-label="Voor wie wij werken" className="lg:hidden">
+          <div className="container pb-2">
+            <SegmentAccordion />
+          </div>
+        </section>
         <Metrics />
         <TrustBar />
         <ServiceTicker />

@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[86svh] items-start overflow-hidden"
+      className="relative flex items-start overflow-hidden lg:min-h-[86svh]"
     >
       {/* Backdrop: clean, luxe charcoal with a soft titanium glow on the right.
           TODO: drop a real high-end building photo in here behind the glow. */}
@@ -28,7 +28,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
       </div>
 
-      <div className="container relative z-10 pt-24 sm:pt-28">
+      <div className="container relative z-10 pt-24 pb-10 sm:pt-28 lg:pb-0">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="max-w-2xl">
           <motion.h1
@@ -53,13 +53,13 @@ export function Hero() {
 
           <motion.div
             {...rise(0.4)}
-            className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
+            className="mt-8 flex flex-wrap items-center gap-3"
           >
-            <LiquidMetalButton href="#contact" size="lg">
+            <LiquidMetalButton href="#contact" size="default">
               Offerte aanvragen
               <ArrowRight className="h-4 w-4" />
             </LiquidMetalButton>
-            <LiquidMetalButton href={contact.phoneHref} size="lg">
+            <LiquidMetalButton href={contact.phoneHref} size="default">
               <Phone className="h-4 w-4" />
               Bel direct
             </LiquidMetalButton>
@@ -68,7 +68,7 @@ export function Hero() {
           {/* Brand value strip from the wrap */}
           <motion.ul
             {...rise(0.55)}
-            className="mt-12 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-brand text-muted-foreground"
+            className="mt-12 hidden flex-wrap items-center gap-x-5 gap-y-2 text-xs font-medium uppercase tracking-brand text-muted-foreground sm:flex"
           >
             {values.map((v, i) => (
               <li key={v} className="flex items-center gap-5">
@@ -83,7 +83,7 @@ export function Hero() {
           </motion.ul>
           </div>
 
-          <motion.div {...rise(0.5)} className="w-full">
+          <motion.div {...rise(0.5)} className="hidden w-full lg:block">
             <SegmentAccordion />
           </motion.div>
         </div>
