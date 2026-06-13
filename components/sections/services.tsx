@@ -24,20 +24,20 @@ function ServiceCard({ service }: { service: Service }) {
     <Link
       href={`/diensten/${service.id}`}
       onMouseMove={handleMouseMove}
-      className="spotlight group relative flex h-full flex-col rounded-lg border border-border/70 bg-card/40 p-6 transition-all duration-500 hover:border-titanium-mid/50 hover:bg-card/70"
+      className="spotlight group relative flex h-full flex-col rounded-lg border border-border/70 bg-card/40 p-4 transition-all duration-500 hover:border-titanium-mid/50 hover:bg-card/70 sm:p-6"
     >
       <service.icon
-        className="h-7 w-7 shrink-0 text-titanium-mid transition-colors duration-500 group-hover:text-titanium-bright"
+        className="h-6 w-6 shrink-0 text-titanium-mid transition-colors duration-500 group-hover:text-titanium-bright sm:h-7 sm:w-7"
         strokeWidth={1.3}
         aria-hidden
       />
-      <h3 className="mt-5 font-display text-lg font-medium tracking-tight text-foreground">
+      <h3 className="mt-4 font-display text-base font-medium tracking-tight text-foreground sm:mt-5 sm:text-lg">
         {service.title}
       </h3>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3">
         {service.summary}
       </p>
-      <span className="mt-auto flex items-center gap-1.5 pt-6 text-xs font-medium uppercase tracking-wider text-titanium-dim transition-colors group-hover:text-titanium-bright">
+      <span className="mt-auto flex items-center gap-1.5 pt-4 text-xs font-medium uppercase tracking-wider text-titanium-dim transition-colors group-hover:text-titanium-bright sm:pt-6">
         Meer over deze dienst
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
       </span>
@@ -60,7 +60,7 @@ export function Services() {
         />
 
         <RevealGroup
-          className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-4 lg:grid-cols-4"
           stagger={0.06}
           delayChildren={0.1}
         >
