@@ -1,0 +1,47 @@
+import { Phone, ArrowRight } from "lucide-react";
+import { contact } from "@/lib/site";
+import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
+import { Reveal } from "@/components/motion/reveal";
+
+/**
+ * Mid-page call-to-action band. Used to keep the offerte/bel action visible
+ * throughout a service page, not just in the hero and footer form.
+ */
+export function ServiceCta({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle?: string;
+}) {
+  return (
+    <section className="relative overflow-hidden py-16 sm:py-20">
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[24rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,hsl(210_24%_72%/0.1),transparent_70%)] blur-2xl" />
+      <div className="container relative">
+        <Reveal className="mx-auto max-w-3xl rounded-xl border border-border/70 bg-card/40 px-8 py-12 text-center sm:px-12">
+          <h2 className="font-display text-2xl font-light leading-tight tracking-tight text-foreground sm:text-3xl">
+            {title}
+          </h2>
+          {subtitle && (
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {subtitle}
+            </p>
+          )}
+          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <LiquidMetalButton href="#offerte" size="lg">
+              Offerte aanvragen
+              <ArrowRight className="h-4 w-4" />
+            </LiquidMetalButton>
+            <LiquidMetalButton href={contact.phoneHref} size="lg">
+              <Phone className="h-4 w-4" />
+              Bel direct
+            </LiquidMetalButton>
+          </div>
+          <p className="mt-5 text-xs text-muted-foreground">
+            Reactie binnen één werkdag. Gratis en vrijblijvend.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  );
+}

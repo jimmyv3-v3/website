@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  J. Versseput — "Satin Charcoal" identity.
+  One dark, luxe theme (no light mode). Satin charcoal base + titanium silver
+  foreground, mapped to the wrap: near-black body, brushed-metal accents, no
+  pure white. To rebrand, edit these variables in one place.
+*/
+@layer base {
+  :root {
+    /* Surfaces — satin charcoal, layered from deepest to lifted */
+    --background: 222 14% 5%;
+    --foreground: 216 12% 82%;
+    --card: 222 14% 8%;
+    --card-foreground: 216 12% 82%;
+    --popover: 222 16% 7%;
+    --popover-foreground: 216 12% 82%;
+
+    /* Titanium — primary surface for CTAs (light metal on charcoal text) */
+    --primary: 216 14% 88%;
+    --primary-foreground: 222 16% 7%;
+
+    --secondary: 222 12% 12%;
+    --secondary-foreground: 216 12% 86%;
+    --muted: 222 11% 13%;
+    --muted-foreground: 220 8% 56%;
+    --accent: 222 12% 13%;
+    --accent-foreground: 216 12% 88%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 216 12% 92%;
+
+    --border: 220 10% 16%;
+    --input: 220 10% 18%;
+    --ring: 216 14% 70%;
+
+    /* Sharp, architectural corners */
+    --radius: 0.3rem;
+
+    /* Titanium sheen stops, reused by the gradient-text + metal utilities */
+    --titanium-dim: 218 10% 52%;
+    --titanium-mid: 216 14% 78%;
+    --titanium-bright: 210 20% 96%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    /* Base colour lives on html so the fixed ambient layer on body shows
+       through every transparent section across the whole page. */
+    background-color: hsl(var(--background));
+  }
+  body {
+    @apply text-foreground;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Page-wide ambient depth: soft, STATIC titanium-grey glows at the left and
+     right edges (top and bottom too) so the backdrop is never one flat black.
+     Fixed to the viewport, so it does not move while scrolling. */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background:
+      radial-gradient(42% 38% at -5% 10%, hsl(216 16% 62% / 0.07), transparent 70%),
+      radial-gradient(40% 36% at 105% 30%, hsl(216 16% 62% / 0.06), transparent 70%),
+      radial-gradient(48% 42% at 104% 78%, hsl(216 16% 62% / 0.05), transparent 72%),
+      radial-gradient(44% 40% at -4% 86%, hsl(216 16% 62% / 0.045), transparent 72%);
+  }
+  /* Very faint architectural grid over the whole page, masked so it fades out
+     toward the edges and never dominates. */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: radial-gradient(ellipse 88% 80% at 50% 32%, #000 8%, transparent 76%);
+    mask-image: radial-gradient(ellipse 88% 80% at 50% 32%, #000 8%, transparent 76%);
+    opacity: 0.4;
+  }
+  ::selection {
+    background: hsl(var(--titanium-mid) / 0.22);
+    color: hsl(var(--titanium-bright));
+  }
+}
+
+@layer components {
+  /* Brushed-titanium gradient text — the brand's signature sheen */
+  .text-titanium {
+    background-image: linear-gradient(
+      100deg,
+      hsl(var(--titanium-dim)) 0%,
+      hsl(var(--titanium-bright)) 38%,
+      hsl(var(--titanium-mid)) 58%,
+      hsl(var(--titanium-dim)) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Frosted glass panel — "part of the surface", not a sticker */
+  .glass-panel {
+    background:
+      linear-gradient(
+        160deg,
+        hsl(var(--card) / 0.9) 0%,
+        hsl(var(--background) / 0.7) 100%
+      );
+    border: 1px solid hsl(var(--border) / 0.8);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  /* Hairline that fades at both ends — used for soft section transitions */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--border)) 18%,
+      hsl(var(--border)) 82%,
+      transparent
+    );
+  }
+}
+
+@layer utilities {
+  /* Soft, edgeless section blends — no hard white lines, ever */
+  .blend-top {
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%);
+    mask-image: linear-gradient(to bottom, transparent, #000 12%);
+  }
+
+  /* Faint architectural grid, fading out toward the edges. Used as a subtle
+     backdrop on dark sections for a precise, blueprint-like feel. */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%);
+    mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 30%, transparent 78%);
+  }
+
+  /* Cursor-following spotlight for cards/bento. Set --mx/--my (px, relative to
+     the element) from JS; the glow tracks the pointer and fades in on hover. */
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    background: radial-gradient(
+      240px circle at var(--mx, 50%) var(--my, 50%),
+      hsl(var(--titanium-mid) / 0.16),
+      transparent 60%
+    );
+    pointer-events: none;
+  }
+  .spotlight:hover::before {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}

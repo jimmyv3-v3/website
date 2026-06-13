@@ -1,0 +1,96 @@
+import Link from "next/link";
+import { Phone, ArrowRight, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { contact } from "@/lib/site";
+import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
+
+type Crumb = { label: string; href?: string };
+
+/**
+ * Service-page hero: breadcrumb, title, lead, two CTAs and an optional photo.
+ * Server component; the CTAs are client (LiquidMetalButton).
+ */
+export function ServiceHero({
+  breadcrumb,
+  title,
+  lead,
+  image,
+  imageAlt,
+}: {
+  breadcrumb: Crumb[];
+  title: string;
+  lead: string;
+  image?: string;
+  imageAlt?: string;
+}) {
+  return (
+    <section className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-36">
+      <div className="pointer-events-none absolute right-0 top-0 h-full w-[55%] bg-[radial-gradient(ellipse_70%_60%_at_75%_30%,hsl(210_22%_60%/0.08),transparent_65%)]" />
+      <div className="container relative">
+        <nav
+          aria-label="Kruimelpad"
+          className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"
+        >
+          {breadcrumb.map((c, i) => (
+            <span key={c.label} className="flex items-center gap-1.5">
+              {i > 0 && (
+                <ChevronRight
+                  className="h-3 w-3 text-titanium-dim/60"
+                  aria-hidden
+                />
+              )}
+              {c.href ? (
+                <Link
+                  href={c.href}
+                  className="transition-colors hover:text-titanium-bright"
+                >
+                  {c.label}
+                </Link>
+              ) : (
+                <span className="text-foreground/80">{c.label}</span>
+              )}
+            </span>
+          ))}
+        </nav>
+
+        <div
+          className={cn(
+            "mt-8 grid items-center gap-12",
+            image && "lg:grid-cols-2",
+          )}
+        >
+          <div className={image ? undefined : "max-w-3xl"}>
+            <h1 className="font-display text-3xl font-light leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              {title}
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+              {lead}
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <LiquidMetalButton href="#offerte" size="lg">
+                Offerte aanvragen
+                <ArrowRight className="h-4 w-4" />
+              </LiquidMetalButton>
+              <LiquidMetalButton href={contact.phoneHref} size="lg">
+                <Phone className="h-4 w-4" />
+                Bel direct
+              </LiquidMetalButton>
+            </div>
+          </div>
+
+          {image && (
+            <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border/60">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={image}
+                alt={imageAlt ?? ""}
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
