@@ -66,7 +66,7 @@ export function ServiceTicker() {
 
         <p
           aria-hidden="true"
-          className="flex flex-col items-center justify-center gap-2 font-display text-3xl font-light leading-tight tracking-tight sm:flex-row sm:gap-x-3 sm:text-4xl lg:text-5xl"
+          className="flex flex-col items-center justify-center gap-2 font-display text-2xl font-light leading-tight tracking-tight sm:flex-row sm:gap-x-3 sm:text-4xl lg:text-5xl"
         >
           <span className="text-muted-foreground">J. Versseput voor al uw</span>
           <motion.span
@@ -105,7 +105,7 @@ export function ServiceTicker() {
       <div
         ref={measureRef}
         aria-hidden="true"
-        className="invisible pointer-events-none absolute left-0 top-0 -z-10 font-display text-3xl font-normal sm:text-4xl lg:text-5xl"
+        className="invisible pointer-events-none absolute left-0 top-0 -z-10 font-display text-2xl font-normal sm:text-4xl lg:text-5xl"
       >
         {words.map((w) => (
           <span key={w} className="inline-block whitespace-nowrap">

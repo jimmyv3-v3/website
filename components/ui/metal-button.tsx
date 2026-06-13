@@ -31,6 +31,7 @@ interface MetalButtonProps {
   size?: keyof typeof SIZES;
   variant?: Variant;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
   ariaLabel?: string;
 }
 
@@ -42,6 +43,7 @@ export function MetalButton({
   size = "default",
   variant = "metal",
   type = "button",
+  disabled = false,
   ariaLabel,
 }: MetalButtonProps) {
   const inner = (
@@ -96,7 +98,8 @@ export function MetalButton({
   return (
     <button
       type={type}
-      className={classes}
+      disabled={disabled}
+      className={cn(classes, disabled && "pointer-events-none opacity-60")}
       onClick={onClick}
       aria-label={ariaLabel}
     >

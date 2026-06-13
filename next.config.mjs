@@ -11,6 +11,15 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
+  // 301-redirects van de oude Wix-pagina's naar de bijbehorende secties op de
+  // nieuwe homepage, zodat SEO-waarde en oude links behouden blijven.
+  async redirects() {
+    return [
+      { source: "/contact", destination: "/#contact", permanent: true },
+      { source: "/werkwijze", destination: "/#werkwijze", permanent: true },
+      { source: "/over-ons", destination: "/#over-ons", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;

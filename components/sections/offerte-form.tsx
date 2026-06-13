@@ -38,6 +38,8 @@ export function OfferteForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   function set<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -55,11 +57,57 @@ export function OfferteForm() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (submitting) return;
     if (!validate()) return;
-    /* TODO: koppel aan een echte backend (route handler /api/offerte of e-maildienst); nu alleen client-side bevestiging */
-    setSent(true);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setSubmitError(
+        "Het formulier is nog niet gekoppeld. Bel of mail ons gerust direct, dan helpen wij u meteen.",
+      );
+      return;
+    }
+
+    setSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `Nieuwe offerteaanvraag van ${form.naam || "de website"}`,
+          from_name: "J. Versseput website",
+          replyto: form.email,
+          Naam: form.naam,
+          Bedrijf: form.bedrijf,
+          "E-mail": form.email,
+          Telefoon: form.telefoon,
+          "Plaats of object": form.plaats,
+          "Type opdrachtgever": form.opdrachtgever,
+          Bericht: form.bericht,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSent(true);
+      } else {
+        setSubmitError(
+          "Er ging iets mis bij het versturen. Probeer het opnieuw of bel ons direct.",
+        );
+      }
+    } catch {
+      setSubmitError(
+        "Er ging iets mis bij het versturen. Probeer het opnieuw of bel ons direct.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -348,9 +396,22 @@ export function OfferteForm() {
 
                       {/* Submit */}
                       <div className="pt-1">
-                        <MetalButton type="submit" size="lg" className="w-full justify-center">
-                          Aanvraag versturen
+                        <MetalButton
+                          type="submit"
+                          size="lg"
+                          className="w-full justify-center"
+                          disabled={submitting}
+                        >
+                          {submitting ? "Versturen…" : "Aanvraag versturen"}
                         </MetalButton>
+                        {submitError && (
+                          <p
+                            role="alert"
+                            className="mt-3 text-sm text-destructive"
+                          >
+                            {submitError}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </fieldset>
