@@ -1,6 +1,5 @@
 "use client";
 
-import { liquidMetalFragmentShader, ShaderMount } from "@paper-design/shaders";
 import {
   useEffect,
   useRef,
@@ -102,17 +101,27 @@ export function LiquidMetalButton({
     const targetSpeed = () =>
       reduced.current ? 0 : !visible.current ? 0 : hovered.current ? 1 : 0.6;
 
+    let cancelled = false;
+    // Loaded lazily below, so the heavy WebGL lib stays out of the critical
+    // bundle. Null until the dynamic import resolves.
+    let shaderApi: {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ShaderMount: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      liquidMetalFragmentShader: any;
+    } | null = null;
+
     // (Re)mount the shader at the element's CURRENT size. Remounting on resize
     // is what keeps the metal rim crisp after the web font widens the button.
     let lastWidth = 0;
     const mount = () => {
       const host = shaderRef.current;
-      if (!host) return;
+      if (!host || !shaderApi) return;
       try {
         mountRef.current?.destroy?.();
-        mountRef.current = new ShaderMount(
+        mountRef.current = new shaderApi.ShaderMount(
           host,
-          liquidMetalFragmentShader,
+          shaderApi.liquidMetalFragmentShader,
           UNIFORMS,
           undefined,
           reduced.current ? 0 : 0.6,
@@ -144,7 +153,23 @@ export function LiquidMetalButton({
       io.observe(rootRef.current);
     }
 
+    // Defer the ~1MB shader bundle until after first paint. The button is fully
+    // styled without it; the shimmering rim simply fades in a moment later.
+    import("@paper-design/shaders")
+      .then((mod) => {
+        if (cancelled) return;
+        shaderApi = {
+          ShaderMount: mod.ShaderMount,
+          liquidMetalFragmentShader: mod.liquidMetalFragmentShader,
+        };
+        mount();
+      })
+      .catch((error) =>
+        console.error("[liquid-metal] shader failed to load", error),
+      );
+
     return () => {
+      cancelled = true;
       ro.disconnect();
       io?.disconnect();
       mountRef.current?.destroy?.();
