@@ -13,6 +13,12 @@ const routes = [
   "/diensten/opleveringsschoonmaak",
   "/diensten/periodiek-onderhoud",
   "/diensten/specialistische-reiniging",
+  "/werkgebied",
+  "/werkgebied/amsterdam",
+  "/werkgebied/rotterdam",
+  "/werkgebied/den-haag",
+  "/werkgebied/utrecht",
+  "/werkgebied/eindhoven",
   "/privacybeleid",
   "/algemene-voorwaarden",
 ];
@@ -23,6 +29,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}${path}`,
     lastModified: now,
     changeFrequency: path === "" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path.startsWith("/diensten") ? 0.8 : 0.4,
+    priority:
+      path === ""
+        ? 1
+        : path.startsWith("/diensten")
+          ? 0.8
+          : path.startsWith("/werkgebied")
+            ? 0.7
+            : 0.4,
   }));
 }

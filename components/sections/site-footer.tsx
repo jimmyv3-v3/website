@@ -14,14 +14,12 @@ const serviceLinks = services.map((s) => ({
 }));
 
 const areaLinks = [
-  "Den Haag",
-  "Rotterdam",
-  "Leiden",
-  "Delft",
-  "Zoetermeer",
-  "Amsterdam",
-  "Utrecht",
-].map((city) => ({ name: city, href: "/#contact" }));
+  { name: "Den Haag", href: "/werkgebied/den-haag" },
+  { name: "Rotterdam", href: "/werkgebied/rotterdam" },
+  { name: "Amsterdam", href: "/werkgebied/amsterdam" },
+  { name: "Utrecht", href: "/werkgebied/utrecht" },
+  { name: "Eindhoven", href: "/werkgebied/eindhoven" },
+];
 
 const socialLinks = [
   {
@@ -114,7 +112,14 @@ export function SiteFooter() {
                     </a>
                   </li>
                 ))}
-                <li className="text-titanium-mid">en heel Nederland</li>
+                <li>
+                  <a
+                    href="/werkgebied"
+                    className="text-titanium-mid transition-colors hover:text-titanium-bright"
+                  >
+                    Heel Nederland
+                  </a>
+                </li>
               </ul>
             </nav>
 

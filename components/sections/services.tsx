@@ -37,7 +37,7 @@ function ServiceCard({ service }: { service: Service }) {
       <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
         {service.summary}
       </p>
-      <span className="mt-5 flex items-center gap-1.5 text-xs font-medium uppercase tracking-wider text-titanium-dim transition-colors group-hover:text-titanium-bright">
+      <span className="mt-auto flex items-center gap-1.5 pt-6 text-xs font-medium uppercase tracking-wider text-titanium-dim transition-colors group-hover:text-titanium-bright">
         Meer over deze dienst
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
       </span>
