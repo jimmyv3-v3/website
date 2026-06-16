@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex items-start overflow-hidden lg:min-h-[86svh]"
+      className="relative flex items-start overflow-hidden lg:min-h-[72svh]"
     >
       {/* Backdrop: clean, luxe charcoal with a soft titanium glow on the right.
           TODO: drop a real high-end building photo in here behind the glow. */}

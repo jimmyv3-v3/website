@@ -10,7 +10,7 @@ export function Clients() {
   return (
     <section
       aria-label="Opdrachtgevers"
-      className="relative pt-10 pb-16 sm:pt-14 sm:pb-20"
+      className="relative pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-4"
     >
       <Marquee
         className="items-center"
