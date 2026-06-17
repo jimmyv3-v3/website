@@ -55,12 +55,14 @@ export const contact = {
 
 // Anchors are prefixed with "/" so the navigation also works from sub-pages
 // (e.g. /privacybeleid): it routes home and then scrolls to the section.
+// `key` verwijst naar messages/<locale>.json onder "common.nav"; `label` blijft
+// als Nederlandse fallback staan.
 export const nav = [
-  { label: "Diensten", href: "/#diensten" },
-  { label: "Werkwijze", href: "/#werkwijze" },
-  { label: "Projecten", href: "/#projecten" },
-  { label: "Over ons", href: "/#over-ons" },
-  { label: "Contact", href: "/#contact" },
+  { key: "services", label: "Diensten", href: "/#diensten" },
+  { key: "method", label: "Werkwijze", href: "/#werkwijze" },
+  { key: "projects", label: "Projecten", href: "/#projecten" },
+  { key: "about", label: "Over ons", href: "/#over-ons" },
+  { key: "contact", label: "Contact", href: "/#contact" },
 ] as const;
 
 /** The four brand values from the wrap, as a trust strip. */

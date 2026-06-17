@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cityContentEn } from "./werkgebied.en";
 
 /**
  * Lokale SEO: landingspagina's per stad onder /werkgebied/[stad]. Elke stad
@@ -232,23 +233,34 @@ export const cityAreas: CityArea[] = [
   },
 ];
 
-export function getCity(slug: string): CityArea | undefined {
-  return cityAreas.find((c) => c.slug === slug);
+// De Engelse variant overlay't alleen de vertaalbare velden; slug, name,
+// province en image blijven uit de Nederlandse bron.
+export function getCity(
+  slug: string,
+  locale: string = "nl",
+): CityArea | undefined {
+  const base = cityAreas.find((c) => c.slug === slug);
+  if (!base) return undefined;
+  if (locale === "en" && cityContentEn[slug]) {
+    return { ...base, ...cityContentEn[slug] };
+  }
+  return base;
 }
 
-export function cityMeta(slug: string): Metadata {
-  const c = getCity(slug);
+export function cityMeta(slug: string, locale: string = "nl"): Metadata {
+  const c = getCity(slug, locale);
   if (!c) return {};
   const path = `/werkgebied/${c.slug}`;
+  const canonical = locale === "en" ? `/en${path}` : path;
   return {
     title: c.metaTitle,
     description: c.metaDescription,
     keywords: c.keywords,
-    alternates: { canonical: path },
+    alternates: { canonical },
     openGraph: {
       type: "website",
-      locale: "nl_NL",
-      url: SITE_URL + path,
+      locale: locale === "en" ? "en_US" : "nl_NL",
+      url: SITE_URL + canonical,
       siteName: SITE_NAME,
       title: `${c.metaTitle} · ${SITE_NAME}`,
       description: c.metaDescription,

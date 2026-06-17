@@ -1,4 +1,5 @@
 import type { LucideIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { assurances } from "@/lib/site";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 
@@ -8,6 +9,8 @@ import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
  * thema, wat vertrouwen wekt bij zakelijke opdrachtgevers.
  */
 export function Assurance() {
+  const t = useTranslations("home.assurance");
+  const items = t.raw("items") as { title: string; body: string }[];
   return (
     <section
       id="kwaliteit"
@@ -23,16 +26,15 @@ export function Assurance() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/certifications/vca.avif"
-                alt="VCA gecertificeerd"
+                alt={t("vcaAlt")}
                 className="h-full w-full object-contain"
               />
             </div>
             <p className="relative mt-6 font-display text-xl font-medium text-titanium-bright">
-              VCA-gecertificeerd
+              {t("vcaTitle")}
             </p>
             <p className="relative mx-auto mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              Onafhankelijk getoetst op veilig en gezond werken, ook hoog boven
-              de begane grond.
+              {t("vcaBody")}
             </p>
           </div>
         </Reveal>
@@ -44,21 +46,21 @@ export function Assurance() {
               id="kwaliteit-heading"
               className="font-display text-2xl font-light leading-tight tracking-tight text-foreground sm:text-3xl"
             >
-              Kwaliteit en veiligheid,{" "}
-              <span className="text-titanium font-normal">zwart op wit</span>
+              {t("heading")}{" "}
+              <span className="text-titanium font-normal">
+                {t("headingAccent")}
+              </span>
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground">
-              Wij zijn VCA-gecertificeerd en professioneel verzekerd. Elk object
-              verzorgen wij volgens de strengste veiligheids- en
-              milieurichtlijnen, met een vast en opgeleid team.
+              {t("intro")}
             </p>
           </Reveal>
 
           <RevealGroup className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
-            {assurances.map((item) => {
+            {assurances.map((item, i) => {
               const Icon: LucideIcon = item.icon;
               return (
-                <RevealItem key={item.title}>
+                <RevealItem key={items[i].title}>
                   <div className="flex gap-4">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/70 bg-card/50">
                       <Icon
@@ -69,10 +71,10 @@ export function Assurance() {
                     </span>
                     <div>
                       <h3 className="font-display text-base font-medium text-foreground">
-                        {item.title}
+                        {items[i].title}
                       </h3>
                       <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                        {item.body}
+                        {items[i].body}
                       </p>
                     </div>
                   </div>

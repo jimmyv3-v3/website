@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Phone, Mail, MessageCircle, CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { contact } from "@/lib/site";
 import { MetalButton } from "@/components/ui/metal-button";
@@ -35,6 +36,7 @@ const INPUT_CLASS =
 const LABEL_CLASS = "text-sm text-muted-foreground";
 
 export function OfferteForm() {
+  const t = useTranslations("home.contactForm");
   const [form, setForm] = useState<FormState>(INITIAL);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [sent, setSent] = useState(false);
@@ -48,11 +50,11 @@ export function OfferteForm() {
 
   function validate(): boolean {
     const next: typeof errors = {};
-    if (!form.naam.trim()) next.naam = "Vul uw naam in.";
-    if (!form.email.trim()) next.email = "Vul uw e-mailadres in.";
+    if (!form.naam.trim()) next.naam = t("errors.name");
+    if (!form.email.trim()) next.email = t("errors.emailRequired");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      next.email = "Vul een geldig e-mailadres in.";
-    if (!form.akkoord) next.akkoord = "U dient akkoord te gaan om door te gaan.";
+      next.email = t("errors.emailInvalid");
+    if (!form.akkoord) next.akkoord = t("errors.consent");
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -64,9 +66,7 @@ export function OfferteForm() {
 
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
     if (!accessKey) {
-      setSubmitError(
-        "Het formulier is nog niet gekoppeld. Bel of mail ons gerust direct, dan helpen wij u meteen.",
-      );
+      setSubmitError(t("errorNotConfigured"));
       return;
     }
 
@@ -97,9 +97,7 @@ export function OfferteForm() {
       if (data.success) {
         setSent(true);
       } else {
-        setSubmitError(
-          "Er ging iets mis bij het versturen. Probeer het opnieuw of bel ons direct.",
-        );
+        setSubmitError(t("errorGeneric"));
       }
     } catch {
       setSubmitError(
@@ -134,16 +132,17 @@ export function OfferteForm() {
                 id="contact-heading"
                 className="font-display text-2xl font-light tracking-tight sm:text-3xl"
               >
-                Klaar om uw vastgoed in{" "}
-                <span className="text-titanium font-normal">topconditie</span>{" "}
-                te brengen?
+                {t.rich("heading", {
+                  accent: (chunks) => (
+                    <span className="text-titanium font-normal">{chunks}</span>
+                  ),
+                })}
               </h2>
             </RevealItem>
 
             <RevealItem>
               <p className="mt-5 text-muted-foreground leading-relaxed max-w-md">
-                Vraag vrijblijvend een offerte aan. Wij denken met u mee over
-                de beste aanpak en reageren binnen één werkdag.
+                {t("intro")}
               </p>
             </RevealItem>
 
@@ -197,16 +196,16 @@ export function OfferteForm() {
                     aria-hidden="true"
                     className="h-4 w-4 shrink-0 text-titanium-mid"
                   />
-                  <dt className="sr-only">Reactietijd</dt>
-                  <dd>{contact.responsePromise}</dd>
+                  <dt className="sr-only">{t("srResponseTime")}</dt>
+                  <dd>{t("benefitResponse")}</dd>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <CheckCircle2
                     aria-hidden="true"
                     className="h-4 w-4 shrink-0 text-titanium-mid"
                   />
-                  <dt className="sr-only">Kosten</dt>
-                  <dd>Gratis en vrijblijvend</dd>
+                  <dt className="sr-only">{t("srCosts")}</dt>
+                  <dd>{t("benefitFree")}</dd>
                 </div>
               </dl>
             </RevealItem>
@@ -222,22 +221,22 @@ export function OfferteForm() {
                     className="h-10 w-10 text-titanium-bright"
                   />
                   <p className="text-foreground font-display font-light text-lg">
-                    Bedankt voor uw aanvraag.
+                    {t("successTitle")}
                   </p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
-                    Wij nemen binnen één werkdag contact met u op.
+                    {t("successBody")}
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate>
                   <fieldset className="contents" disabled={false}>
-                    <legend className="sr-only">Offerteaanvraag</legend>
+                    <legend className="sr-only">{t("legend")}</legend>
 
                     <div className="space-y-5">
                       {/* Naam */}
                       <div>
                         <label htmlFor="offerte-naam" className={LABEL_CLASS}>
-                          Naam <span aria-hidden="true" className="text-muted-foreground/40">*</span>
+                          {t("labels.name")} <span aria-hidden="true" className="text-muted-foreground/40">*</span>
                         </label>
                         <input
                           id="offerte-naam"
@@ -246,7 +245,7 @@ export function OfferteForm() {
                           required
                           value={form.naam}
                           onChange={(e) => set("naam", e.target.value)}
-                          placeholder="Uw volledige naam"
+                          placeholder={t("placeholders.name")}
                           className={cn(INPUT_CLASS, errors.naam && "border-destructive/60")}
                           aria-describedby={errors.naam ? "err-naam" : undefined}
                           aria-invalid={!!errors.naam}
@@ -261,8 +260,8 @@ export function OfferteForm() {
                       {/* Bedrijf */}
                       <div>
                         <label htmlFor="offerte-bedrijf" className={LABEL_CLASS}>
-                          Bedrijf{" "}
-                          <span className="text-muted-foreground/40">(optioneel)</span>
+                          {t("labels.company")}{" "}
+                          <span className="text-muted-foreground/40">{t("optional")}</span>
                         </label>
                         <input
                           id="offerte-bedrijf"
@@ -270,7 +269,7 @@ export function OfferteForm() {
                           autoComplete="organization"
                           value={form.bedrijf}
                           onChange={(e) => set("bedrijf", e.target.value)}
-                          placeholder="Naam van uw organisatie"
+                          placeholder={t("placeholders.company")}
                           className={INPUT_CLASS}
                         />
                       </div>
@@ -278,7 +277,7 @@ export function OfferteForm() {
                       {/* E-mail */}
                       <div>
                         <label htmlFor="offerte-email" className={LABEL_CLASS}>
-                          E-mail <span aria-hidden="true" className="text-muted-foreground/40">*</span>
+                          {t("labels.email")} <span aria-hidden="true" className="text-muted-foreground/40">*</span>
                         </label>
                         <input
                           id="offerte-email"
@@ -287,7 +286,7 @@ export function OfferteForm() {
                           required
                           value={form.email}
                           onChange={(e) => set("email", e.target.value)}
-                          placeholder="uw@emailadres.nl"
+                          placeholder={t("placeholders.email")}
                           className={cn(INPUT_CLASS, errors.email && "border-destructive/60")}
                           aria-describedby={errors.email ? "err-email" : undefined}
                           aria-invalid={!!errors.email}
@@ -302,7 +301,7 @@ export function OfferteForm() {
                       {/* Telefoon */}
                       <div>
                         <label htmlFor="offerte-telefoon" className={LABEL_CLASS}>
-                          Telefoon
+                          {t("labels.phone")}
                         </label>
                         <input
                           id="offerte-telefoon"
@@ -318,14 +317,14 @@ export function OfferteForm() {
                       {/* Plaats of object */}
                       <div>
                         <label htmlFor="offerte-plaats" className={LABEL_CLASS}>
-                          Plaats of object
+                          {t("labels.place")}
                         </label>
                         <input
                           id="offerte-plaats"
                           type="text"
                           value={form.plaats}
                           onChange={(e) => set("plaats", e.target.value)}
-                          placeholder="Bijv. Den Haag of naam van het pand"
+                          placeholder={t("placeholders.place")}
                           className={INPUT_CLASS}
                         />
                       </div>
@@ -333,7 +332,7 @@ export function OfferteForm() {
                       {/* Type opdrachtgever */}
                       <div>
                         <label htmlFor="offerte-opdrachtgever" className={LABEL_CLASS}>
-                          Type opdrachtgever
+                          {t("labels.clientType")}
                         </label>
                         <select
                           id="offerte-opdrachtgever"
@@ -341,27 +340,27 @@ export function OfferteForm() {
                           onChange={(e) => set("opdrachtgever", e.target.value)}
                           className={cn(INPUT_CLASS, "appearance-none")}
                         >
-                          <option value="">Selecteer een categorie</option>
-                          <option value="vastgoedbeheer">Vastgoedbeheer</option>
-                          <option value="vve">VvE</option>
-                          <option value="kantoor">Kantoor</option>
-                          <option value="overheid">Overheid of instelling</option>
-                          <option value="particulier">Particulier</option>
-                          <option value="anders">Anders</option>
+                          <option value="">{t("clientOptions.placeholder")}</option>
+                          <option value="vastgoedbeheer">{t("clientOptions.vastgoedbeheer")}</option>
+                          <option value="vve">{t("clientOptions.vve")}</option>
+                          <option value="kantoor">{t("clientOptions.kantoor")}</option>
+                          <option value="overheid">{t("clientOptions.overheid")}</option>
+                          <option value="particulier">{t("clientOptions.particulier")}</option>
+                          <option value="anders">{t("clientOptions.anders")}</option>
                         </select>
                       </div>
 
                       {/* Bericht */}
                       <div>
                         <label htmlFor="offerte-bericht" className={LABEL_CLASS}>
-                          Bericht
+                          {t("labels.message")}
                         </label>
                         <textarea
                           id="offerte-bericht"
                           rows={4}
                           value={form.bericht}
                           onChange={(e) => set("bericht", e.target.value)}
-                          placeholder="Beschrijf uw situatie of de gewenste werkzaamheden."
+                          placeholder={t("placeholders.message")}
                           className={cn(INPUT_CLASS, "resize-y")}
                         />
                       </div>
@@ -383,7 +382,7 @@ export function OfferteForm() {
                             htmlFor="offerte-akkoord"
                             className={cn(LABEL_CLASS, "leading-snug cursor-pointer")}
                           >
-                            Ik ga akkoord met de verwerking van mijn gegevens voor deze aanvraag.{" "}
+                            {t("labels.consent")}{" "}
                             <span aria-hidden="true" className="text-muted-foreground/40">*</span>
                           </label>
                         </div>
@@ -402,7 +401,7 @@ export function OfferteForm() {
                           className="w-full justify-center"
                           disabled={submitting}
                         >
-                          {submitting ? "Versturen…" : "Aanvraag versturen"}
+                          {submitting ? t("submitting") : t("submit")}
                         </MetalButton>
                         {submitError && (
                           <p

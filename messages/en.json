@@ -1,0 +1,376 @@
+{
+  "common": {
+    "languageSwitcher": {
+      "label": "Choose language",
+      "nl": "Dutch",
+      "en": "English"
+    },
+    "cta": {
+      "requestQuote": "Request a quote",
+      "quote": "Quote",
+      "callUs": "Call us",
+      "callDirect": "Call us now"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Services",
+      "method": "How we work",
+      "projects": "Projects",
+      "about": "About us",
+      "contact": "Contact"
+    }
+  },
+  "meta": {
+    "titleDefault": "Window, façade and property maintenance · J. Versseput",
+    "titleTemplate": "%s · J. Versseput",
+    "description": "J. Versseput is your trusted partner for window, façade and property maintenance. We keep commercial property across the Netherlands presentable and valuable, with craftsmanship spanning three generations.",
+    "keywords": [
+      "window cleaning",
+      "window cleaner",
+      "façade cleaning",
+      "façade maintenance",
+      "property maintenance",
+      "solar panel cleaning",
+      "gutter cleaning",
+      "pressure washing",
+      "cleaning maintenance",
+      "window cleaner The Hague",
+      "commercial window cleaning",
+      "window cleaner owners' association",
+      "window cleaning at height"
+    ]
+  },
+  "legal": {
+    "updatedAt": "Last updated on {date}.",
+    "contactQuestion": "Do you have a question about this document? We are happy to help.",
+    "contactCta": "Get in touch"
+  },
+  "service": {
+    "breadcrumbAria": "Breadcrumb",
+    "faqHeading": "Frequently asked questions",
+    "ctaNote": "Response within one business day. Free and without obligation."
+  },
+  "werkgebied": {
+    "navLabel": "Service area",
+    "overview": {
+      "metaTitle": "Service area",
+      "metaDescription": "J. Versseput provides window, façade and property maintenance throughout the Netherlands, with landing pages for Amsterdam, Rotterdam, The Hague, Utrecht and Eindhoven.",
+      "titleLead": "Property maintenance",
+      "titleAccent": "throughout the Netherlands",
+      "intro": "Our home base is The Hague and with our own team and equipment we are available nationwide. Below you will find our pages by city, with an emphasis on the largest cities in the Netherlands.",
+      "viewCity": "View {city}",
+      "notListed": "Don't see your city? We work throughout the Netherlands with our own team and equipment.",
+      "cta": "Request a quote"
+    },
+    "city": {
+      "partnerIn": "Your dedicated partner in",
+      "servicesIn": "Our services in",
+      "servicesIntro": "One partner for everything on the outside of your property.",
+      "moreAbout": "More about this service",
+      "whyIn": "Why J. Versseput in",
+      "faqHeading": "Frequently asked questions about {city}",
+      "ctaTitle": "Property maintenance in {city}?",
+      "ctaSubtitle": "Request a no-obligation quote. We respond within one business day and think along with you about the best approach.",
+      "features": {
+        "local": {
+          "title": "Locally present",
+          "body": "Active in {city} and the surrounding area with our own team and equipment, and available throughout the Netherlands."
+        },
+        "vca": {
+          "title": "VCA certified",
+          "body": "Safe working at height to the strictest guidelines, and fully insured."
+        },
+        "team": {
+          "title": "Permanent, trained team",
+          "body": "Presentable, well-spoken staff who know your building inside out."
+        },
+        "partner": {
+          "title": "One dedicated partner",
+          "body": "Glass, façades, solar panels and periodic maintenance, all from a single provider."
+        }
+      }
+    }
+  },
+  "header": {
+    "mainMenu": "Main menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileMenu": "Mobile menu",
+    "quickContact": "Quick contact",
+    "callAria": "Call {phone}",
+    "whatsappAria": "Send a WhatsApp message to request a quote"
+  },
+  "footer": {
+    "description": "Your trusted partner for window and façade maintenance. We keep your property presentable and protect its value, with craftsmanship spanning three generations.",
+    "responsePromise": "Response within one business day",
+    "columns": {
+      "services": "Services",
+      "workArea": "Service area",
+      "contact": "Contact"
+    },
+    "allOfNetherlands": "All of the Netherlands",
+    "rights": "© {year} {name}. All rights reserved.",
+    "privacy": "Privacy policy",
+    "terms": "Terms and conditions"
+  },
+  "services": {
+    "glas-en-gevelonderhoud": {
+      "title": "Window and façade maintenance",
+      "summary": "The visible calling card of your building, expertly kept clean from the ground floor to the high-rise. Glass inside and out, frames and trim included as standard."
+    },
+    "gevelreiniging": {
+      "title": "Façade cleaning",
+      "summary": "Experience with every façade material and type of soiling, with advice on the most sustainable method."
+    },
+    "zonnepanelenreiniging": {
+      "title": "Solar panel cleaning",
+      "summary": "Clean panels yield more. We keep your installation clear and performing at its best."
+    },
+    "dakgootreiniging": {
+      "title": "Gutter cleaning",
+      "summary": "Clear gutters prevent leaks and wood rot, handled in a single visit during maintenance."
+    },
+    "hogedrukreiniging": {
+      "title": "Pressure washing",
+      "summary": "Paving, grounds and entrances looking fresh again, for a well-kept first impression."
+    },
+    "opleveringsschoonmaak": {
+      "title": "Handover and construction cleaning",
+      "summary": "A new or renovated building handed over broom-clean to showroom-ready."
+    },
+    "specialistische-reiniging": {
+      "title": "Specialist cleaning",
+      "summary": "Complex work at height and on unusual surfaces where others bow out."
+    },
+    "periodiek-onderhoud": {
+      "title": "Periodic cleaning maintenance",
+      "summary": "A fixed rhythm that keeps your building presentable all year round, without any hassle."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "Your reliable partner in <accent>window, façade and property maintenance</accent>.",
+      "intro": "We keep property presentable and protect its value with craftsmanship that has been passed down for three generations. One reliable partner for everything on the outside of your building, throughout the Netherlands."
+    },
+    "values": ["Reliable", "Craftsmanship", "Quality", "Sustainable"],
+    "metricLabels": [
+      "years of experience",
+      "properties under management",
+      "provinces served"
+    ],
+    "trustBar": {
+      "ariaLabel": "Core values",
+      "items": [
+        {
+          "title": "Craftsmanship in every detail",
+          "body": "A result that stays the same from the first visit to the last, on every building we take on."
+        },
+        {
+          "title": "Reliable and transparent",
+          "body": "You get a single point of contact, a clear schedule and a fair agreement with no surprises."
+        },
+        {
+          "title": "Quality that preserves buildings",
+          "body": "We keep your property presentable and protect the long-term value of the building."
+        },
+        {
+          "title": "Available throughout the Netherlands",
+          "body": "Our teams and fleet work on large, landmark buildings across the Randstad and beyond."
+        }
+      ]
+    },
+    "segments": {
+      "ariaLabel": "Who we work for",
+      "commercieel": {
+        "title": "High-rise & commercial",
+        "blurb": "Offices, hotels, retail and high-rise buildings."
+      },
+      "vve": {
+        "title": "Owners' associations & property management",
+        "blurb": "Apartment complexes and managed portfolios."
+      },
+      "overheid": {
+        "title": "Government & institutions",
+        "blurb": "Government, embassies and prestigious locations."
+      },
+      "particulier": {
+        "title": "Private clients & villas",
+        "blurb": "Private homes and detached villas."
+      }
+    },
+    "metricsAriaLabel": "J. Versseput in numbers",
+    "clientsAriaLabel": "Clients",
+    "ticker": {
+      "ariaLabel": "J. Versseput for all your services",
+      "lead": "J. Versseput for all your",
+      "srSentence": "J. Versseput for all your {words}.",
+      "words": [
+        "window cleaning",
+        "façade cleaning",
+        "solar panel cleaning",
+        "gutter cleaning",
+        "pressure washing",
+        "window cleaning at height",
+        "handover cleaning",
+        "construction cleaning",
+        "specialist cleaning",
+        "cleaning maintenance"
+      ],
+      "viewAll": "View all services"
+    },
+    "servicesSection": {
+      "ariaLabel": "Our services",
+      "title": "One partner for everything on the",
+      "accent": "outside of your property",
+      "intro": "Instead of managing separate suppliers, you work with one dedicated partner who handles the complete maintenance of your property.",
+      "moreAbout": "More about this service"
+    },
+    "process": {
+      "title": "A way of working that",
+      "accent": "takes everything off your hands",
+      "intro": "From the first survey to the report after every visit, we stay in control so you can focus on your property with complete peace of mind.",
+      "steps": [
+        {
+          "title": "Intake and advice",
+          "body": "We assess your building and determine the best and most sustainable approach for every façade together with you."
+        },
+        {
+          "title": "A tailored plan",
+          "body": "You receive a clear schedule with a fixed interval and a single point of contact for your building."
+        },
+        {
+          "title": "Expert execution",
+          "body": "Our team works neatly and safely at height, with the right technique for every situation."
+        },
+        {
+          "title": "Reporting and aftercare",
+          "body": "After every visit you know exactly what has been done, so quality stays demonstrably assured."
+        }
+      ]
+    },
+    "projects": {
+      "titleLead": "Property people are",
+      "titleAccent": "proud of",
+      "intro": "From The Hague office giants to retail galleries across the Netherlands, we maintain buildings that have to look presentable all year round.",
+      "altDefault": "Property maintained by J. Versseput",
+      "altAbn": "ABN AMRO tower, window and façade maintenance by J. Versseput",
+      "altBabylon": "New Babylon, window and façade maintenance by J. Versseput"
+    },
+    "proof": {
+      "quote": "Versseput has handled our window cleaning and façade maintenance for years, and does so impeccably time after time.",
+      "author": "Babylon Tower",
+      "role": "The Hague, multi-year client"
+    },
+    "assurance": {
+      "vcaTitle": "VCA certified",
+      "vcaBody": "Independently assessed for safe and healthy working, including high above the ground.",
+      "vcaAlt": "VCA certified",
+      "heading": "Quality and safety,",
+      "headingAccent": "in black and white",
+      "intro": "We are VCA certified and professionally insured. We maintain every building to the strictest safety and environmental guidelines, with a permanent, trained team.",
+      "items": [
+        {
+          "title": "Professionally insured",
+          "body": "Should anything unexpectedly go wrong, the work is fully insured and we handle it properly."
+        },
+        {
+          "title": "Safe working at height",
+          "body": "As a VCA-certified company we work to the strictest safety guidelines, with a risk assessment for every building."
+        },
+        {
+          "title": "Trained, permanent team",
+          "body": "Presentable, English-speaking staff who know your building inside out."
+        },
+        {
+          "title": "Environmentally conscious",
+          "body": "Pure water and the most environmentally friendly method, tailored to every surface."
+        }
+      ]
+    },
+    "about": {
+      "title": "A family business that is redefining the standard in <accent>property maintenance</accent>.",
+      "p1": "The origins of J. Versseput lie in window cleaning, started more than sixty years ago in the heart of The Hague and grown from father to son into a professional organisation. We bring that same dedication today to the largest and most striking buildings in the country.",
+      "p2": "We work with presentable, well-spoken staff who treat every building with the same care, from the first visit to the last. Our ambition is clear. We want to be the most reliable and most premium partner in property maintenance in the Netherlands.",
+      "location": "Based in {city}, active throughout {region}."
+    },
+    "faq": {
+      "heading": "Frequently asked",
+      "headingAccent": "questions",
+      "items": [
+        {
+          "q": "Which regions does J. Versseput operate in?",
+          "a": "Our home base is The Hague. With our own equipment and team we are available throughout the Netherlands, with an emphasis on the Randstad."
+        },
+        {
+          "q": "Do you work for both business and private clients?",
+          "a": "Yes. Our focus is on commercial property such as property managers, owners' associations, offices and government, but private clients in the higher segment are also welcome."
+        },
+        {
+          "q": "Up to what height can you work?",
+          "a": "With our aerial platforms we reach up to thirty-six metres and with the telewash system up to fifteen metres. For high-rise buildings we use the building's own façade installation wherever possible."
+        },
+        {
+          "q": "How often is the maintenance carried out?",
+          "a": "We prefer to work to a fixed interval that suits your building and its surroundings, so it looks well-kept all year round. One-off work is of course also possible."
+        },
+        {
+          "q": "Are you insured and do you work safely?",
+          "a": "Yes. We are VCA certified and professionally insured, and we work to the strictest safety guidelines with a risk assessment for every building."
+        },
+        {
+          "q": "How quickly will I get a reply to my request?",
+          "a": "We respond to your quote request within one business day and are happy to think along with you about the best approach."
+        }
+      ]
+    },
+    "contactForm": {
+      "heading": "Ready to get your property in <accent>top condition</accent>?",
+      "intro": "Request a quote without obligation. We think along with you about the best approach and respond within one business day.",
+      "benefitResponse": "Response within one business day",
+      "benefitFree": "Free and without obligation",
+      "srResponseTime": "Response time",
+      "srCosts": "Costs",
+      "successTitle": "Thank you for your request.",
+      "successBody": "We will get in touch with you within one business day.",
+      "legend": "Quote request",
+      "optional": "(optional)",
+      "labels": {
+        "name": "Name",
+        "company": "Company",
+        "email": "Email",
+        "phone": "Phone",
+        "place": "Town or building",
+        "clientType": "Type of client",
+        "message": "Message",
+        "consent": "I agree to the processing of my details for this request."
+      },
+      "placeholders": {
+        "name": "Your full name",
+        "company": "Name of your organisation",
+        "email": "you@youremail.com",
+        "phone": "+31 6 …",
+        "place": "e.g. The Hague or the name of the building",
+        "message": "Describe your situation or the work you need."
+      },
+      "clientOptions": {
+        "placeholder": "Select a category",
+        "vastgoedbeheer": "Property management",
+        "vve": "Owners' association",
+        "kantoor": "Office",
+        "overheid": "Government or institution",
+        "particulier": "Private client",
+        "anders": "Other"
+      },
+      "errors": {
+        "name": "Please enter your name.",
+        "emailRequired": "Please enter your email address.",
+        "emailInvalid": "Please enter a valid email address.",
+        "consent": "You must agree in order to continue."
+      },
+      "submit": "Send request",
+      "submitting": "Sending…",
+      "errorNotConfigured": "The form is not connected yet. Feel free to call or email us directly and we will help you right away.",
+      "errorGeneric": "Something went wrong while sending. Please try again or call us directly."
+    }
+  }
+}

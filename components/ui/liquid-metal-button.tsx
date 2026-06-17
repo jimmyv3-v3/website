@@ -7,6 +7,7 @@ import {
   type MouseEvent,
   type ReactNode,
 } from "react";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 /**
@@ -264,6 +265,15 @@ export function LiquidMetalButton({
   );
 
   if (href) {
+    // Interne paden krijgen de juiste taal-prefix via de locale-bewuste Link;
+    // hash-ankers (#offerte) en externe links (tel:, mailto:) blijven <a>.
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} {...props}>
+          {inner}
+        </Link>
+      );
+    }
     return (
       <a href={href} {...props}>
         {inner}

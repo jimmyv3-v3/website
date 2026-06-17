@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback } from "react";
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { services } from "@/lib/site";
 import type { Service } from "@/lib/site";
+import { Link } from "@/i18n/navigation";
 import { SectionHeading } from "@/components/sections/section-heading";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 
@@ -14,6 +15,7 @@ import { RevealGroup, RevealItem } from "@/components/motion/reveal";
  * client").
  */
 function ServiceCard({ service }: { service: Service }) {
+  const t = useTranslations();
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     e.currentTarget.style.setProperty("--mx", e.clientX - rect.left + "px");
@@ -32,13 +34,13 @@ function ServiceCard({ service }: { service: Service }) {
         aria-hidden
       />
       <h3 className="mt-4 font-display text-base font-medium tracking-tight text-foreground sm:mt-5 sm:text-lg">
-        {service.title}
+        {t(`services.${service.id}.title`)}
       </h3>
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:mt-3">
-        {service.summary}
+        {t(`services.${service.id}.summary`)}
       </p>
       <span className="mt-auto flex items-center gap-1.5 pt-4 text-xs font-medium uppercase tracking-wider text-titanium-dim transition-colors group-hover:text-titanium-bright sm:pt-6">
-        Meer over deze dienst
+        {t("home.servicesSection.moreAbout")}
         <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
       </span>
     </Link>
@@ -46,17 +48,18 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 export function Services() {
+  const t = useTranslations("home.servicesSection");
   return (
     <section
       id="diensten"
-      aria-label="Onze diensten"
+      aria-label={t("ariaLabel")}
       className="relative scroll-mt-24 border-y border-border/60 bg-card/20 py-16 sm:py-20"
     >
       <div className="container relative">
         <SectionHeading
-          title="Eén partner voor alles aan de"
-          accent="buitenzijde van uw vastgoed"
-          intro="In plaats van losse leveranciers te managen, werkt u met één vaste partner die het volledige onderhoud van uw vastgoed verzorgt."
+          title={t("title")}
+          accent={t("accent")}
+          intro={t("intro")}
         />
 
         <RevealGroup

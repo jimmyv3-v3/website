@@ -1,7 +1,8 @@
-import Link from "next/link";
 import { Phone, ArrowRight, ChevronRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { contact } from "@/lib/site";
+import { Link } from "@/i18n/navigation";
 import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
 
 type Crumb = { label: string; href?: string };
@@ -23,12 +24,13 @@ export function ServiceHero({
   image?: string;
   imageAlt?: string;
 }) {
+  const t = useTranslations();
   return (
     <section className="relative overflow-hidden pb-16 pt-32 sm:pb-20 sm:pt-36">
       <div className="pointer-events-none absolute right-0 top-0 h-full w-[55%] bg-[radial-gradient(ellipse_70%_60%_at_75%_30%,hsl(210_22%_60%/0.08),transparent_65%)]" />
       <div className="container relative">
         <nav
-          aria-label="Kruimelpad"
+          aria-label={t("service.breadcrumbAria")}
           className="flex flex-wrap items-center gap-1.5 text-xs text-muted-foreground"
         >
           {breadcrumb.map((c, i) => (
@@ -68,12 +70,12 @@ export function ServiceHero({
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <LiquidMetalButton href="#offerte" size="default">
-                Offerte aanvragen
+                {t("common.cta.requestQuote")}
                 <ArrowRight className="h-4 w-4" />
               </LiquidMetalButton>
               <LiquidMetalButton href={contact.phoneHref} size="default">
                 <Phone className="h-4 w-4" />
-                Bel direct
+                {t("common.cta.callDirect")}
               </LiquidMetalButton>
             </div>
           </div>

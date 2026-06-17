@@ -1,44 +1,41 @@
+import { useTranslations } from "next-intl";
 import { Reveal, RevealGroup, RevealItem } from "@/components/motion/reveal";
 
 /**
  * Projectengalerij. Het gebouw is de held: een uniform raster van even grote
  * tegels met echte projectfoto's, zonder tekst in de blokken.
  * Foto's staan in /public/projects (overgenomen uit de portfolio-map).
+ * `altKey` verwijst naar de vertaalde alt-tekst in messages onder home.projects.
  */
 const photos = [
-  {
-    src: "/projects/abn.avif",
-    alt: "ABN AMRO-toren, glas- en gevelonderhoud door J. Versseput",
-  },
-  {
-    src: "/projects/babylon.png",
-    alt: "New Babylon, glas- en gevelonderhoud door J. Versseput",
-  },
-  { src: "/projects/gallery-7.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-8.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-9.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-10.png", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-11.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-12.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/gallery-13.jpg", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/cta-1.png", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/cta-2.png", alt: "Vastgoedproject onderhouden door J. Versseput" },
-  { src: "/projects/cta-4.png", alt: "Vastgoedproject onderhouden door J. Versseput" },
-];
+  { src: "/projects/abn.avif", altKey: "altAbn" },
+  { src: "/projects/babylon.png", altKey: "altBabylon" },
+  { src: "/projects/gallery-7.jpg", altKey: "altDefault" },
+  { src: "/projects/gallery-8.jpg", altKey: "altDefault" },
+  { src: "/projects/gallery-9.jpg", altKey: "altDefault" },
+  { src: "/projects/gallery-10.png", altKey: "altDefault" },
+  { src: "/projects/gallery-11.jpg", altKey: "altDefault" },
+  { src: "/projects/gallery-12.jpg", altKey: "altDefault" },
+  { src: "/projects/gallery-13.jpg", altKey: "altDefault" },
+  { src: "/projects/cta-1.png", altKey: "altDefault" },
+  { src: "/projects/cta-2.png", altKey: "altDefault" },
+  { src: "/projects/cta-4.png", altKey: "altDefault" },
+] as const;
 
 export function Projects() {
+  const t = useTranslations("home.projects");
   return (
     <section id="projecten" className="relative scroll-mt-24 py-24 sm:py-32">
       <div className="container relative">
         <Reveal className="max-w-2xl">
           <h2 className="font-display text-3xl font-light leading-tight tracking-tight text-foreground sm:text-4xl">
-            Vastgoed waar men{" "}
-            <span className="text-titanium font-normal">trots op is</span>
+            {t("titleLead")}{" "}
+            <span className="text-titanium font-normal">
+              {t("titleAccent")}
+            </span>
           </h2>
           <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-            Van Haagse kantoorkolossen tot retailgalerijen door heel Nederland:
-            wij onderhouden objecten die er het hele jaar door representatief bij
-            moeten staan.
+            {t("intro")}
           </p>
         </Reveal>
 
@@ -53,7 +50,7 @@ export function Projects() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photo.src}
-                  alt={photo.alt}
+                  alt={t(photo.altKey)}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />

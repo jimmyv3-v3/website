@@ -1,5 +1,7 @@
 import { Phone, Mail, MessageCircle, Linkedin, Instagram } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { contact, services } from "@/lib/site";
+import { Link } from "@/i18n/navigation";
 import { Wordmark } from "@/components/brand/wordmark";
 
 /**
@@ -34,28 +36,30 @@ const socialLinks = [
   },
 ];
 
+// Namen komen uit messages/<locale>.json onder "footer"; hrefs houden de
+// Nederlandse slugs aan.
 const legalLinks = [
-  { name: "Privacybeleid", href: "/privacybeleid" },
-  { name: "Algemene voorwaarden", href: "/algemene-voorwaarden" },
-];
+  { key: "privacy", href: "/privacybeleid" },
+  { key: "terms", href: "/algemene-voorwaarden" },
+] as const;
 
 export function SiteFooter() {
+  const t = useTranslations("footer");
+
   return (
     <footer className="border-t border-border/60 bg-card/30">
       <div className="container py-20">
         <div className="flex w-full flex-col justify-between gap-12 lg:flex-row lg:items-start">
           {/* Brand + description + contact channels */}
           <div className="flex w-full max-w-sm flex-col gap-6">
-            <a href="/#top" aria-label={contact.name}>
+            <Link href="/#top" aria-label={contact.name}>
               <Wordmark idSuffix="footer" />
-            </a>
+            </Link>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Uw vertrouwde partner voor glas- en gevelonderhoud. Wij houden
-              vastgoed representatief en in waarde, met vakmanschap uit drie
-              generaties.
+              {t("description")}
             </p>
             <p className="text-sm font-medium text-titanium-bright">
-              {contact.responsePromise}
+              {t("responsePromise")}
             </p>
             <ul className="flex items-center gap-3">
               {socialLinks.map((social) => {
@@ -79,53 +83,53 @@ export function SiteFooter() {
 
           {/* Link columns */}
           <div className="grid w-full gap-10 sm:grid-cols-3 lg:max-w-2xl lg:gap-16">
-            <nav aria-label="Diensten">
+            <nav aria-label={t("columns.services")}>
               <h2 className="mb-4 font-display text-xs font-medium uppercase tracking-wider text-foreground">
-                Diensten
+                {t("columns.services")}
               </h2>
               <ul className="space-y-3 text-sm">
                 {serviceLinks.map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-muted-foreground transition-colors hover:text-titanium-bright"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
-            <nav aria-label="Werkgebied">
+            <nav aria-label={t("columns.workArea")}>
               <h2 className="mb-4 font-display text-xs font-medium uppercase tracking-wider text-foreground">
-                Werkgebied
+                {t("columns.workArea")}
               </h2>
               <ul className="space-y-3 text-sm">
                 {areaLinks.map((link) => (
                   <li key={link.name}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-muted-foreground transition-colors hover:text-titanium-bright"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li>
-                  <a
+                  <Link
                     href="/werkgebied"
                     className="text-titanium-mid transition-colors hover:text-titanium-bright"
                   >
-                    Heel Nederland
-                  </a>
+                    {t("allOfNetherlands")}
+                  </Link>
                 </li>
               </ul>
             </nav>
 
             <div>
               <h2 className="mb-4 font-display text-xs font-medium uppercase tracking-wider text-foreground">
-                Contact
+                {t("columns.contact")}
               </h2>
               <address className="space-y-3 text-sm not-italic text-muted-foreground">
                 <a
@@ -163,18 +167,20 @@ export function SiteFooter() {
         {/* Legal bottom bar */}
         <div className="mt-16 flex flex-col justify-between gap-4 border-t border-border/40 pt-8 pb-24 text-xs font-medium text-muted-foreground md:flex-row md:items-center lg:pb-0">
           <p className="order-2 md:order-1">
-            © {new Date().getFullYear()} {contact.name}. Alle rechten
-            voorbehouden.
+            {t("rights", {
+              year: String(new Date().getFullYear()),
+              name: contact.name,
+            })}
           </p>
           <ul className="order-1 flex flex-col gap-2 md:order-2 md:flex-row md:gap-6">
             {legalLinks.map((link) => (
-              <li key={link.name}>
-                <a
+              <li key={link.key}>
+                <Link
                   href={link.href}
                   className="transition-colors hover:text-titanium-bright"
                 >
-                  {link.name}
-                </a>
+                  {t(link.key)}
+                </Link>
               </li>
             ))}
           </ul>

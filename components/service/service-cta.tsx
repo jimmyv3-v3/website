@@ -1,4 +1,5 @@
 import { Phone, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { contact } from "@/lib/site";
 import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
 import { Reveal } from "@/components/motion/reveal";
@@ -14,6 +15,7 @@ export function ServiceCta({
   title: string;
   subtitle?: string;
 }) {
+  const t = useTranslations();
   return (
     <section className="relative overflow-hidden py-16 sm:py-20">
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[24rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,hsl(210_24%_72%/0.1),transparent_70%)] blur-2xl" />
@@ -29,16 +31,16 @@ export function ServiceCta({
           )}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <LiquidMetalButton href="#offerte" size="default">
-              Offerte aanvragen
+              {t("common.cta.requestQuote")}
               <ArrowRight className="h-4 w-4" />
             </LiquidMetalButton>
             <LiquidMetalButton href={contact.phoneHref} size="default">
               <Phone className="h-4 w-4" />
-              Bel direct
+              {t("common.cta.callDirect")}
             </LiquidMetalButton>
           </div>
           <p className="mt-5 text-xs text-muted-foreground">
-            Reactie binnen één werkdag. Gratis en vrijblijvend.
+            {t("service.ctaNote")}
           </p>
         </Reveal>
       </div>

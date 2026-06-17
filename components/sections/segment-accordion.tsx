@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { segments } from "@/lib/site";
 
@@ -13,6 +14,7 @@ import { segments } from "@/lib/site";
  * Valt terug op een titanium gradient als een foto ontbreekt.
  */
 export function SegmentAccordion() {
+  const t = useTranslations("home.segments");
   const [active, setActive] = useState(0);
   const [broken, setBroken] = useState<Record<string, boolean>>({});
   const onErr = (id: string) => setBroken((p) => ({ ...p, [id]: true }));
@@ -23,6 +25,8 @@ export function SegmentAccordion() {
       <div className="flex flex-col gap-3 lg:hidden">
         {segments.map((s) => {
           const Icon = s.icon;
+          const title = t(`${s.id}.title`);
+          const blurb = t(`${s.id}.blurb`);
           return (
             <div
               key={s.id}
@@ -48,10 +52,10 @@ export function SegmentAccordion() {
               />
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="font-display text-base font-medium tracking-tight text-titanium-bright">
-                  {s.title}
+                  {title}
                 </p>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  {s.blurb}
+                  {blurb}
                 </p>
               </div>
             </div>
@@ -64,6 +68,8 @@ export function SegmentAccordion() {
         {segments.map((s, i) => {
           const isActive = i === active;
           const Icon = s.icon;
+          const title = t(`${s.id}.title`);
+          const blurb = t(`${s.id}.blurb`);
           return (
             <button
               key={s.id}
@@ -71,7 +77,7 @@ export function SegmentAccordion() {
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               onClick={() => setActive(i)}
-              aria-label={s.title}
+              aria-label={title}
               aria-pressed={isActive}
               className={cn(
                 "group relative h-full overflow-hidden rounded-lg border border-border/60 outline-none",
@@ -119,9 +125,9 @@ export function SegmentAccordion() {
                 )}
               >
                 <p className="font-display text-lg font-medium tracking-tight text-titanium-bright">
-                  {s.title}
+                  {title}
                 </p>
-                <p className="mt-1 text-sm text-muted-foreground">{s.blurb}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{blurb}</p>
               </div>
 
               {/* Ingeklapt: verticaal label */}
@@ -131,7 +137,7 @@ export function SegmentAccordion() {
                   isActive ? "opacity-0" : "opacity-100",
                 )}
               >
-                {s.title}
+                {title}
               </span>
             </button>
           );

@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { clients } from "@/lib/site";
 import { Marquee } from "@/components/ui/marquee";
 
@@ -7,9 +8,10 @@ import { Marquee } from "@/components/ui/marquee";
  * palette. Scrolling + fade + pause-on-hover handled by the Marquee.
  */
 export function Clients() {
+  const t = useTranslations("home");
   return (
     <section
-      aria-label="Opdrachtgevers"
+      aria-label={t("clientsAriaLabel")}
       className="relative pt-10 pb-16 sm:pt-14 sm:pb-20 lg:pt-4"
     >
       <Marquee

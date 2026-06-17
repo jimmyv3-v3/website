@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 /**
@@ -88,6 +89,21 @@ export function MetalButton({
   );
 
   if (href) {
+    // Interne paden (beginnend met "/") krijgen automatisch de juiste taal-
+    // prefix via de locale-bewuste Link. Hash-ankers (#offerte) en externe
+    // links (tel:, mailto:) blijven een gewone <a>.
+    if (href.startsWith("/")) {
+      return (
+        <Link
+          href={href}
+          className={classes}
+          onClick={onClick}
+          aria-label={ariaLabel}
+        >
+          {inner}
+        </Link>
+      );
+    }
     return (
       <a href={href} className={classes} onClick={onClick} aria-label={ariaLabel}>
         {inner}

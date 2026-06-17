@@ -1,0 +1,376 @@
+{
+  "common": {
+    "languageSwitcher": {
+      "label": "Taal kiezen",
+      "nl": "Nederlands",
+      "en": "Engels"
+    },
+    "cta": {
+      "requestQuote": "Offerte aanvragen",
+      "quote": "Offerte",
+      "callUs": "Bel ons",
+      "callDirect": "Bel direct"
+    },
+    "nav": {
+      "home": "Home",
+      "services": "Diensten",
+      "method": "Werkwijze",
+      "projects": "Projecten",
+      "about": "Over ons",
+      "contact": "Contact"
+    }
+  },
+  "meta": {
+    "titleDefault": "Glas-, gevel- en vastgoedonderhoud · J. Versseput",
+    "titleTemplate": "%s · J. Versseput",
+    "description": "J. Versseput is uw vertrouwde partner voor glas-, gevel- en vastgoedonderhoud. Wij houden zakelijk vastgoed door heel Nederland representatief en in waarde, met vakmanschap uit drie generaties.",
+    "keywords": [
+      "glasbewassing",
+      "glazenwasser",
+      "gevelreiniging",
+      "gevelonderhoud",
+      "vastgoedonderhoud",
+      "zonnepanelen reinigen",
+      "dakgoot reinigen",
+      "hogedrukreiniging",
+      "schoonmaakonderhoud",
+      "glazenwasser Den Haag",
+      "glasbewassing zakelijk",
+      "glazenwasser VvE",
+      "glasbewassing op hoogte"
+    ]
+  },
+  "legal": {
+    "updatedAt": "Laatst bijgewerkt op {date}.",
+    "contactQuestion": "Heeft u een vraag over dit document? Wij helpen u graag verder.",
+    "contactCta": "Neem contact op"
+  },
+  "service": {
+    "breadcrumbAria": "Kruimelpad",
+    "faqHeading": "Veelgestelde vragen",
+    "ctaNote": "Reactie binnen één werkdag. Gratis en vrijblijvend."
+  },
+  "werkgebied": {
+    "navLabel": "Werkgebied",
+    "overview": {
+      "metaTitle": "Werkgebied",
+      "metaDescription": "J. Versseput verzorgt glas-, gevel- en vastgoedonderhoud door heel Nederland, met landingspagina's voor Amsterdam, Rotterdam, Den Haag, Utrecht en Eindhoven.",
+      "titleLead": "Vastgoedonderhoud",
+      "titleAccent": "door heel Nederland",
+      "intro": "Onze thuisbasis is Den Haag en met eigen team en materieel zijn wij landelijk inzetbaar. Hieronder vindt u onze pagina's per stad, met de nadruk op de grootste steden van Nederland.",
+      "viewCity": "Bekijk {city}",
+      "notListed": "Staat uw stad er niet bij? Wij werken met eigen team en materieel door heel Nederland.",
+      "cta": "Vraag een offerte aan"
+    },
+    "city": {
+      "partnerIn": "Uw vaste partner in",
+      "servicesIn": "Onze diensten in",
+      "servicesIntro": "Eén partner voor alles aan de buitenzijde van uw vastgoed.",
+      "moreAbout": "Meer over deze dienst",
+      "whyIn": "Waarom J. Versseput in",
+      "faqHeading": "Veelgestelde vragen over {city}",
+      "ctaTitle": "Vastgoedonderhoud in {city}?",
+      "ctaSubtitle": "Vraag vrijblijvend een offerte aan. Wij reageren binnen één werkdag en denken met u mee over de beste aanpak.",
+      "features": {
+        "local": {
+          "title": "Lokaal aanwezig",
+          "body": "Met eigen team en materieel actief in {city} en omgeving, en inzetbaar door heel Nederland."
+        },
+        "vca": {
+          "title": "VCA-gecertificeerd",
+          "body": "Veilig werken op hoogte volgens de strengste richtlijnen, en volledig verzekerd."
+        },
+        "team": {
+          "title": "Vast, opgeleid team",
+          "body": "Representatief, Nederlands sprekend personeel dat uw object door en door kent."
+        },
+        "partner": {
+          "title": "Eén vaste partner",
+          "body": "Glas, gevel, zonnepanelen en periodiek onderhoud, alles onder één hand."
+        }
+      }
+    }
+  },
+  "header": {
+    "mainMenu": "Hoofdmenu",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten",
+    "mobileMenu": "Mobiel menu",
+    "quickContact": "Snelcontact",
+    "callAria": "Bel {phone}",
+    "whatsappAria": "Stuur een WhatsApp-bericht voor een offerte"
+  },
+  "footer": {
+    "description": "Uw vertrouwde partner voor glas- en gevelonderhoud. Wij houden vastgoed representatief en in waarde, met vakmanschap uit drie generaties.",
+    "responsePromise": "Reactie binnen één werkdag",
+    "columns": {
+      "services": "Diensten",
+      "workArea": "Werkgebied",
+      "contact": "Contact"
+    },
+    "allOfNetherlands": "Heel Nederland",
+    "rights": "© {year} {name}. Alle rechten voorbehouden.",
+    "privacy": "Privacybeleid",
+    "terms": "Algemene voorwaarden"
+  },
+  "services": {
+    "glas-en-gevelonderhoud": {
+      "title": "Glas- en gevelonderhoud",
+      "summary": "Het zichtbare visitekaartje van uw pand, vakkundig schoongehouden van de begane grond tot de hoogbouw. Glas binnen en buiten, kozijnen en lijstwerk standaard inbegrepen."
+    },
+    "gevelreiniging": {
+      "title": "Gevelreiniging",
+      "summary": "Ervaring met alle gevelmaterialen en vervuilingen, met advies over de meest duurzame methode."
+    },
+    "zonnepanelenreiniging": {
+      "title": "Zonnepanelenreiniging",
+      "summary": "Schone panelen leveren meer op. Wij houden uw installatie helder en op rendement."
+    },
+    "dakgootreiniging": {
+      "title": "Dakgootreiniging",
+      "summary": "Vrije goten voorkomen lekkage en houtrot, in één beurt meegenomen tijdens het onderhoud."
+    },
+    "hogedrukreiniging": {
+      "title": "Hogedrukreiniging",
+      "summary": "Bestrating, terreinen en entrees weer fris, voor een verzorgde eerste indruk."
+    },
+    "opleveringsschoonmaak": {
+      "title": "Oplevering- en bouwschoonmaak",
+      "summary": "Een nieuw of verbouwd pand bezemschoon tot showroomklaar opgeleverd."
+    },
+    "specialistische-reiniging": {
+      "title": "Specialistische reiniging",
+      "summary": "Complex werk op hoogte en bijzondere oppervlakken waar anderen afhaken."
+    },
+    "periodiek-onderhoud": {
+      "title": "Periodiek schoonmaakonderhoud",
+      "summary": "Een vast ritme zodat uw pand het hele jaar door representatief blijft, zonder omkijken."
+    }
+  },
+  "home": {
+    "hero": {
+      "title": "De betrouwbare partner in <accent>glas-, gevel- en vastgoedonderhoud</accent>.",
+      "intro": "Wij houden vastgoed representatief en in waarde met vakmanschap dat al drie generaties wordt doorgegeven. Eén betrouwbare partner voor alles aan de buitenzijde van uw pand, door heel Nederland."
+    },
+    "values": ["Betrouwbaar", "Vakmanschap", "Kwaliteit", "Duurzaam"],
+    "metricLabels": [
+      "jaar ervaring",
+      "objecten in beheer",
+      "provincies inzetbaar"
+    ],
+    "trustBar": {
+      "ariaLabel": "Kernwaarden",
+      "items": [
+        {
+          "title": "Vakmanschap in elk detail",
+          "body": "Een resultaat dat van de eerste tot de laatste beurt gelijk blijft, op elk gebouw dat wij onder handen nemen."
+        },
+        {
+          "title": "Betrouwbaar en transparant",
+          "body": "U krijgt een vast aanspreekpunt, een heldere planning en een eerlijke afspraak zonder verrassingen."
+        },
+        {
+          "title": "Kwaliteit die gebouwen behoudt",
+          "body": "Wij houden uw vastgoed representatief en beschermen de waarde van het pand op de lange termijn."
+        },
+        {
+          "title": "Inzetbaar door heel Nederland",
+          "body": "Onze ploegen en vloot werken bij grote, aansprekende objecten in de hele Randstad en daarbuiten."
+        }
+      ]
+    },
+    "segments": {
+      "ariaLabel": "Voor wie wij werken",
+      "commercieel": {
+        "title": "Hoogbouw & commercieel",
+        "blurb": "Kantoren, hotels, retail en hoogbouw."
+      },
+      "vve": {
+        "title": "VvE's & vastgoedbeheer",
+        "blurb": "Appartementencomplexen en beheerportefeuilles."
+      },
+      "overheid": {
+        "title": "Overheid & instituten",
+        "blurb": "Overheid, ambassades en representatieve locaties."
+      },
+      "particulier": {
+        "title": "Particulier & villa's",
+        "blurb": "Privéwoningen en vrijstaande villa's."
+      }
+    },
+    "metricsAriaLabel": "J. Versseput in cijfers",
+    "clientsAriaLabel": "Opdrachtgevers",
+    "ticker": {
+      "ariaLabel": "J. Versseput voor al uw diensten",
+      "lead": "J. Versseput voor al uw",
+      "srSentence": "J. Versseput voor al uw {words}.",
+      "words": [
+        "glasbewassing",
+        "gevelreiniging",
+        "zonnepanelenreiniging",
+        "dakgootreiniging",
+        "hogedrukreiniging",
+        "glasbewassing op hoogte",
+        "opleveringsschoonmaak",
+        "bouwschoonmaak",
+        "specialistische reiniging",
+        "schoonmaakonderhoud"
+      ],
+      "viewAll": "Bekijk alle diensten"
+    },
+    "servicesSection": {
+      "ariaLabel": "Onze diensten",
+      "title": "Eén partner voor alles aan de",
+      "accent": "buitenzijde van uw vastgoed",
+      "intro": "In plaats van losse leveranciers te managen, werkt u met één vaste partner die het volledige onderhoud van uw vastgoed verzorgt.",
+      "moreAbout": "Meer over deze dienst"
+    },
+    "process": {
+      "title": "Een werkwijze die",
+      "accent": "volledig ontzorgt",
+      "intro": "Van de eerste opname tot de rapportage na elke beurt houden wij de regie, zodat u zich met een gerust hart op uw vastgoed kunt richten.",
+      "steps": [
+        {
+          "title": "Intake en advies",
+          "body": "Wij bekijken uw pand en bepalen samen de beste en meest duurzame aanpak voor elke gevel."
+        },
+        {
+          "title": "Plan op maat",
+          "body": "U ontvangt een heldere planning met een vast interval en een vast aanspreekpunt voor uw object."
+        },
+        {
+          "title": "Vakkundige uitvoering",
+          "body": "Ons team werkt representatief en veilig op hoogte met de juiste techniek voor elke situatie."
+        },
+        {
+          "title": "Rapportage en nazorg",
+          "body": "Na elke beurt weet u precies wat er is gedaan, zodat de kwaliteit aantoonbaar gewaarborgd blijft."
+        }
+      ]
+    },
+    "projects": {
+      "titleLead": "Vastgoed waar men",
+      "titleAccent": "trots op is",
+      "intro": "Van Haagse kantoorkolossen tot retailgalerijen door heel Nederland: wij onderhouden objecten die er het hele jaar door representatief bij moeten staan.",
+      "altDefault": "Vastgoedproject onderhouden door J. Versseput",
+      "altAbn": "ABN AMRO-toren, glas- en gevelonderhoud door J. Versseput",
+      "altBabylon": "New Babylon, glas- en gevelonderhoud door J. Versseput"
+    },
+    "proof": {
+      "quote": "Versseput verzorgt al jaren de glasbewassing en het gevelonderhoud bij ons en doet dat keer op keer onberispelijk.",
+      "author": "Babylon Tower",
+      "role": "Den Haag, meerjarige opdrachtgever"
+    },
+    "assurance": {
+      "vcaTitle": "VCA-gecertificeerd",
+      "vcaBody": "Onafhankelijk getoetst op veilig en gezond werken, ook hoog boven de begane grond.",
+      "vcaAlt": "VCA gecertificeerd",
+      "heading": "Kwaliteit en veiligheid,",
+      "headingAccent": "zwart op wit",
+      "intro": "Wij zijn VCA-gecertificeerd en professioneel verzekerd. Elk object verzorgen wij volgens de strengste veiligheids- en milieurichtlijnen, met een vast en opgeleid team.",
+      "items": [
+        {
+          "title": "Professioneel verzekerd",
+          "body": "Mocht er onverhoopt iets gebeuren, dan is het werk volledig verzekerd en handelen wij netjes af."
+        },
+        {
+          "title": "Veilig werken op hoogte",
+          "body": "Als VCA-gecertificeerd bedrijf werken wij volgens de strengste veiligheidsrichtlijnen, met een risico-inventarisatie per object."
+        },
+        {
+          "title": "Opgeleid en vast team",
+          "body": "Representatief, Nederlands sprekend personeel dat uw object door en door kent."
+        },
+        {
+          "title": "Milieubewust",
+          "body": "Zuiver water en de meest milieuvriendelijke methode, afgestemd op elke ondergrond."
+        }
+      ]
+    },
+    "about": {
+      "title": "Een familiebedrijf dat de standaard in <accent>vastgoedonderhoud</accent> opnieuw definieert.",
+      "p1": "De oorsprong van J. Versseput ligt in het glazenwassen, ruim zestig jaar geleden begonnen in de Haagse binnenstad en van vader op zoon uitgegroeid tot een professionele organisatie. Diezelfde toewijding sturen wij vandaag aan op de grootste en meest aansprekende objecten van het land.",
+      "p2": "Wij werken met representatief en goed Nederlands sprekend personeel dat elk gebouw met dezelfde zorg behandelt, van de eerste beurt tot de laatste. Onze ambitie is helder. Wij willen de meest betrouwbare en meest luxe partner in vastgoedonderhoud van Nederland zijn.",
+      "location": "Gevestigd in {city}, actief in {region}."
+    },
+    "faq": {
+      "heading": "Veelgestelde",
+      "headingAccent": "vragen",
+      "items": [
+        {
+          "q": "In welke regio's is J. Versseput actief?",
+          "a": "Onze thuisbasis is Den Haag. Met eigen materieel en team zijn wij door heel Nederland inzetbaar, met de nadruk op de Randstad."
+        },
+        {
+          "q": "Werken jullie voor zakelijke én particuliere opdrachtgevers?",
+          "a": "Ja. Onze focus ligt op zakelijk vastgoed zoals beheerders, VvE's, kantoren en overheid, maar ook particuliere opdrachtgevers in het hogere segment kunnen bij ons terecht."
+        },
+        {
+          "q": "Tot welke hoogte kunnen jullie werken?",
+          "a": "Met onze hoogwerkers bereiken wij tot zesendertig meter en met het telewash-systeem tot vijftien meter. Voor hoogbouw zetten wij waar mogelijk de gevelinstallatie van het gebouw in."
+        },
+        {
+          "q": "Hoe vaak wordt het onderhoud uitgevoerd?",
+          "a": "Wij werken het liefst in een vast interval dat past bij uw pand en omgeving, zodat het er het hele jaar door verzorgd uitziet. Eenmalig werk is uiteraard ook mogelijk."
+        },
+        {
+          "q": "Zijn jullie verzekerd en werken jullie veilig?",
+          "a": "Ja. Wij zijn VCA-gecertificeerd en professioneel verzekerd, en werken volgens de strengste veiligheidsrichtlijnen met een risico-inventarisatie per object."
+        },
+        {
+          "q": "Hoe snel krijg ik antwoord op mijn aanvraag?",
+          "a": "Wij reageren binnen één werkdag op uw offerteaanvraag en denken graag met u mee over de beste aanpak."
+        }
+      ]
+    },
+    "contactForm": {
+      "heading": "Klaar om uw vastgoed in <accent>topconditie</accent> te brengen?",
+      "intro": "Vraag vrijblijvend een offerte aan. Wij denken met u mee over de beste aanpak en reageren binnen één werkdag.",
+      "benefitResponse": "Reactie binnen één werkdag",
+      "benefitFree": "Gratis en vrijblijvend",
+      "srResponseTime": "Reactietijd",
+      "srCosts": "Kosten",
+      "successTitle": "Bedankt voor uw aanvraag.",
+      "successBody": "Wij nemen binnen één werkdag contact met u op.",
+      "legend": "Offerteaanvraag",
+      "optional": "(optioneel)",
+      "labels": {
+        "name": "Naam",
+        "company": "Bedrijf",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "place": "Plaats of object",
+        "clientType": "Type opdrachtgever",
+        "message": "Bericht",
+        "consent": "Ik ga akkoord met de verwerking van mijn gegevens voor deze aanvraag."
+      },
+      "placeholders": {
+        "name": "Uw volledige naam",
+        "company": "Naam van uw organisatie",
+        "email": "uw@emailadres.nl",
+        "phone": "+31 6 …",
+        "place": "Bijv. Den Haag of naam van het pand",
+        "message": "Beschrijf uw situatie of de gewenste werkzaamheden."
+      },
+      "clientOptions": {
+        "placeholder": "Selecteer een categorie",
+        "vastgoedbeheer": "Vastgoedbeheer",
+        "vve": "VvE",
+        "kantoor": "Kantoor",
+        "overheid": "Overheid of instelling",
+        "particulier": "Particulier",
+        "anders": "Anders"
+      },
+      "errors": {
+        "name": "Vul uw naam in.",
+        "emailRequired": "Vul uw e-mailadres in.",
+        "emailInvalid": "Vul een geldig e-mailadres in.",
+        "consent": "U dient akkoord te gaan om door te gaan."
+      },
+      "submit": "Aanvraag versturen",
+      "submitting": "Versturen…",
+      "errorNotConfigured": "Het formulier is nog niet gekoppeld. Bel of mail ons gerust direct, dan helpen wij u meteen.",
+      "errorGeneric": "Er ging iets mis bij het versturen. Probeer het opnieuw of bel ons direct."
+    }
+  }
+}

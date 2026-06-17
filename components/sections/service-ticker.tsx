@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { serviceTicker } from "@/lib/site";
+import { useTranslations } from "next-intl";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const INTERVAL = 2200;
@@ -17,7 +17,8 @@ const INTERVAL = 2200;
  * readers.
  */
 export function ServiceTicker() {
-  const words = serviceTicker as readonly string[];
+  const t = useTranslations("home.ticker");
+  const words = t.raw("words") as string[];
   const reduce = useReducedMotion();
   const [index, setIndex] = useState(0);
   const [width, setWidth] = useState<number | undefined>(undefined);
@@ -46,7 +47,7 @@ export function ServiceTicker() {
 
   return (
     <section
-      aria-label="J. Versseput voor al uw diensten"
+      aria-label={t("ariaLabel")}
       className="relative overflow-hidden border-y border-border/60 bg-card/20 py-20 sm:py-28"
     >
       {/* Ambient: faint grid + soft central glow */}
@@ -61,14 +62,14 @@ export function ServiceTicker() {
 
       <div className="container relative flex flex-col items-center text-center">
         <p className="sr-only">
-          J. Versseput voor al uw {words.join(", ")}.
+          {t("srSentence", { words: words.join(", ") })}
         </p>
 
         <p
           aria-hidden="true"
           className="flex flex-col items-center justify-center gap-2 font-display text-2xl font-light leading-tight tracking-tight sm:flex-row sm:gap-x-3 sm:text-4xl lg:text-5xl"
         >
-          <span className="text-muted-foreground">J. Versseput voor al uw</span>
+          <span className="text-muted-foreground">{t("lead")}</span>
           <motion.span
             className="relative inline-flex h-[1.3em] items-center justify-center overflow-hidden align-middle"
             animate={{ width }}
@@ -93,7 +94,7 @@ export function ServiceTicker() {
           href="#diensten"
           className="group mt-9 inline-flex items-center gap-2 text-sm tracking-wide text-muted-foreground transition-colors hover:text-titanium-bright"
         >
-          Bekijk alle diensten
+          {t("viewAll")}
           <ArrowRight
             className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
             aria-hidden="true"

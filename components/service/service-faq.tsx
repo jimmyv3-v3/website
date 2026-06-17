@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { SectionHeading } from "@/components/sections/section-heading";
 
@@ -10,17 +11,19 @@ export type FaqItem = { q: string; a: string };
 /** Accessible FAQ accordion for a service page. */
 export function ServiceFaq({
   items,
-  heading = "Veelgestelde vragen",
+  heading,
 }: {
   items: FaqItem[];
   heading?: string;
 }) {
+  const t = useTranslations("service");
+  const resolvedHeading = heading ?? t("faqHeading");
   const [open, setOpen] = useState<number | null>(0);
 
   return (
     <section id="faq" className="relative scroll-mt-24 py-16 sm:py-20">
       <div className="container max-w-3xl">
-        <SectionHeading title={heading} align="center" />
+        <SectionHeading title={resolvedHeading} align="center" />
         <div className="mt-12 border-t border-border/60">
           {items.map((item, i) => {
             const isOpen = open === i;

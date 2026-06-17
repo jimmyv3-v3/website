@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { MetalButton } from "@/components/ui/metal-button";
@@ -25,6 +26,7 @@ export function LegalPage({
   sections: LegalSection[];
   articlePrefix?: string;
 }) {
+  const t = useTranslations("legal");
   return (
     <>
       <SiteHeader />
@@ -43,7 +45,7 @@ export function LegalPage({
               {intro}
             </p>
             <p className="mt-6 text-sm text-muted-foreground/70">
-              Laatst bijgewerkt op {updatedAt}.
+              {t("updatedAt", { date: updatedAt })}
             </p>
           </div>
         </section>
@@ -87,11 +89,11 @@ export function LegalPage({
 
             <div className="mt-16 rounded-xl border border-border/70 bg-card/40 p-8 text-center">
               <p className="text-base leading-relaxed text-muted-foreground">
-                Heeft u een vraag over dit document? Wij helpen u graag verder.
+                {t("contactQuestion")}
               </p>
               <div className="mt-6 flex justify-center">
                 <MetalButton href="/#contact" size="lg">
-                  Neem contact op
+                  {t("contactCta")}
                 </MetalButton>
               </div>
             </div>

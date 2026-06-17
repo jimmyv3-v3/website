@@ -2,7 +2,8 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Phone, ArrowRight } from "lucide-react";
-import { contact, values } from "@/lib/site";
+import { useTranslations } from "next-intl";
+import { contact } from "@/lib/site";
 import { LiquidMetalButton } from "@/components/ui/liquid-metal-button";
 import { SegmentAccordion } from "@/components/sections/segment-accordion";
 
@@ -10,6 +11,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   const reduce = useReducedMotion();
+  const t = useTranslations();
+  const values = t.raw("home.values") as string[];
   const rise = (delay: number) => ({
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.98 },
     animate: { opacity: 1, y: 0, scale: 1 },
@@ -35,20 +38,18 @@ export function Hero() {
             {...rise(0.1)}
             className="font-display text-3xl font-light leading-[1.1] tracking-tight text-foreground sm:text-4xl lg:text-5xl"
           >
-            De betrouwbare partner in{" "}
-            <span className="text-titanium font-normal">
-              glas-, gevel- en vastgoedonderhoud
-            </span>
-            .
+            {t.rich("home.hero.title", {
+              accent: (chunks) => (
+                <span className="text-titanium font-normal">{chunks}</span>
+              ),
+            })}
           </motion.h1>
 
           <motion.p
             {...rise(0.25)}
             className="mt-7 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            Wij houden vastgoed representatief en in waarde met vakmanschap dat
-            al drie generaties wordt doorgegeven. Eén betrouwbare partner voor
-            alles aan de buitenzijde van uw pand, door heel Nederland.
+            {t("home.hero.intro")}
           </motion.p>
 
           <motion.div
@@ -56,12 +57,12 @@ export function Hero() {
             className="mt-8 flex flex-wrap items-center gap-3"
           >
             <LiquidMetalButton href="#contact" size="default">
-              Offerte aanvragen
+              {t("common.cta.requestQuote")}
               <ArrowRight className="h-4 w-4" />
             </LiquidMetalButton>
             <LiquidMetalButton href={contact.phoneHref} size="default">
               <Phone className="h-4 w-4" />
-              Bel direct
+              {t("common.cta.callDirect")}
             </LiquidMetalButton>
           </motion.div>
 

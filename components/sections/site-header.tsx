@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Phone, MessageCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { nav, contact, services } from "@/lib/site";
 import { Wordmark } from "@/components/brand/wordmark";
 import {
@@ -19,6 +20,7 @@ import {
   NavigationMenuPopup,
 } from "@/components/ui/navigation-menu";
 import { MetalButton } from "@/components/ui/metal-button";
+import { LanguageToggle } from "@/components/ui/language-toggle";
 import { useScroll } from "@/components/ui/use-scroll";
 import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon";
 
@@ -28,6 +30,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrolled = useScroll(10);
+  const t = useTranslations();
 
   useEffect(() => setMounted(true), []);
 
@@ -50,18 +53,20 @@ export function SiteHeader() {
         )}
       >
         <div className="container flex h-16 items-center justify-between gap-4">
-          <a href="/#top" aria-label={contact.name} className="shrink-0">
+          <Link href="/#top" aria-label={contact.name} className="shrink-0">
             <Wordmark idSuffix="header" />
-          </a>
+          </Link>
 
           <nav
             className="hidden items-center gap-1 lg:flex"
-            aria-label="Hoofdmenu"
+            aria-label={t("header.mainMenu")}
           >
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Diensten</NavigationMenuTrigger>
+                  <NavigationMenuTrigger>
+                    {t("common.nav.services")}
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <ul className="grid w-[min(92vw,640px)] gap-1 p-2 sm:grid-cols-2">
                       {services.map((s) => (
@@ -96,13 +101,13 @@ export function SiteHeader() {
             </NavigationMenu>
 
             {nav.slice(1).map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 className="rounded-md px-3 py-2 text-sm tracking-wide text-muted-foreground transition-colors hover:bg-card/40 hover:text-titanium-bright"
               >
-                {item.label}
-              </a>
+                {t(`common.nav.${item.key}`)}
+              </Link>
             ))}
           </nav>
 
@@ -123,8 +128,9 @@ export function SiteHeader() {
             >
               <MessageCircle className="h-4 w-4" aria-hidden />
             </a>
+            <LanguageToggle />
             <MetalButton href="/#contact" size="sm">
-              Offerte aanvragen
+              {t("common.cta.requestQuote")}
             </MetalButton>
           </div>
 
@@ -133,7 +139,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            aria-label={open ? "Menu sluiten" : "Menu openen"}
+            aria-label={open ? t("header.closeMenu") : t("header.openMenu")}
             className="flex h-10 w-10 items-center justify-center rounded-md border border-border/70 bg-card/40 text-foreground transition-colors hover:text-titanium-bright lg:hidden"
           >
             <MenuToggleIcon open={open} className="h-5 w-5" />
@@ -155,7 +161,7 @@ export function SiteHeader() {
                 className="fixed inset-x-0 bottom-0 top-16 z-[45] bg-background/95 backdrop-blur-xl lg:hidden"
               >
                 <motion.nav
-                  aria-label="Mobiel menu"
+                  aria-label={t("header.mobileMenu")}
                   initial={{ opacity: 0, scale: 0.98, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0 }}
@@ -165,33 +171,34 @@ export function SiteHeader() {
                   <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
                     <div className="border-b border-border/60 py-4">
                       <p className="font-display text-lg font-light tracking-tight text-foreground">
-                        Diensten
+                        {t("common.nav.services")}
                       </p>
                       <div className="mt-2 flex flex-col">
                         {services.map((s) => (
-                          <a
+                          <Link
                             key={s.id}
                             href={`/diensten/${s.id}`}
                             onClick={() => setOpen(false)}
                             className="py-2 text-sm text-muted-foreground transition-colors hover:text-titanium-bright"
                           >
                             {s.title}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
                     {nav.slice(1).map((item) => (
-                      <a
+                      <Link
                         key={item.href}
                         href={item.href}
                         onClick={() => setOpen(false)}
                         className="border-b border-border/60 py-4 font-display text-lg font-light tracking-tight text-foreground transition-colors hover:text-titanium-bright"
                       >
-                        {item.label}
-                      </a>
+                        {t(`common.nav.${item.key}`)}
+                      </Link>
                     ))}
                   </div>
                   <div className="flex flex-col gap-3">
+                    <LanguageToggle className="self-start" />
                     <a
                       href={contact.phoneHref}
                       className="flex items-center gap-2 text-sm text-muted-foreground"
@@ -204,7 +211,7 @@ export function SiteHeader() {
                       className="w-full"
                       onClick={() => setOpen(false)}
                     >
-                      Offerte aanvragen
+                      {t("common.cta.requestQuote")}
                     </MetalButton>
                   </div>
                 </motion.nav>
@@ -216,28 +223,28 @@ export function SiteHeader() {
 
       {/* Sticky mobile action bar at the bottom of the viewport */}
       <nav
-        aria-label="Snelcontact"
+        aria-label={t("header.quickContact")}
         className="fixed inset-x-0 bottom-0 z-40 lg:hidden"
       >
         <div className="glass-panel border-x-0 border-b-0 px-4 pb-[env(safe-area-inset-bottom,0.75rem)] pt-3">
           <div className="grid grid-cols-2 gap-3">
             <a
               href={contact.phoneHref}
-              aria-label={`Bel ${contact.phone}`}
+              aria-label={t("header.callAria", { phone: contact.phone })}
               className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border/60 bg-card/60 px-5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-titanium-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <Phone className="h-4 w-4 shrink-0" aria-hidden />
-              Bel ons
+              {t("common.cta.callUs")}
             </a>
             <a
               href={contact.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Stuur een WhatsApp-bericht voor een offerte"
+              aria-label={t("header.whatsappAria")}
               className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border/60 bg-card/60 px-5 text-sm font-medium text-muted-foreground transition-colors duration-200 hover:text-titanium-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               <MessageCircle className="h-4 w-4 shrink-0" aria-hidden />
-              Offerte
+              {t("common.cta.quote")}
             </a>
           </div>
         </div>

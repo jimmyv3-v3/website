@@ -1,9 +1,10 @@
 import { Quote } from "lucide-react";
-import { proof } from "@/lib/site";
+import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/reveal";
 import { Monogram } from "@/components/brand/monogram";
 
 export function Proof() {
+  const t = useTranslations("home.proof");
   return (
     <section
       id="ervaring"
@@ -21,17 +22,17 @@ export function Proof() {
               />
               <blockquote id="proof-quote">
                 <p className="font-display text-2xl font-light leading-snug tracking-tight text-foreground sm:text-3xl lg:text-4xl">
-                  &ldquo;{proof.quote}&rdquo;
+                  &ldquo;{t("quote")}&rdquo;
                 </p>
               </blockquote>
               <figcaption className="mt-10 flex flex-col items-center gap-4">
                 <Monogram className="h-8 w-auto opacity-80" />
                 <div className="flex flex-col items-center gap-0.5">
                   <span className="font-display text-sm font-medium text-foreground">
-                    {proof.author}
+                    {t("author")}
                   </span>
                   <span className="text-sm text-muted-foreground">
-                    {proof.role}
+                    {t("role")}
                   </span>
                 </div>
               </figcaption>

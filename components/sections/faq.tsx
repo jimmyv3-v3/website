@@ -1,8 +1,10 @@
 import { ChevronDown } from "lucide-react";
-import { faqs } from "@/lib/site";
+import { useTranslations } from "next-intl";
 import { Reveal } from "@/components/motion/reveal";
 
 export default function Faq() {
+  const t = useTranslations("home.faq");
+  const items = t.raw("items") as { q: string; a: string }[];
   return (
     <section
       aria-labelledby="faq-heading"
@@ -15,14 +17,16 @@ export default function Faq() {
               id="faq-heading"
               className="font-display text-2xl font-light tracking-tight text-foreground sm:text-3xl mb-12"
             >
-              Veelgestelde{" "}
-              <span className="text-titanium font-normal">vragen</span>
+              {t("heading")}{" "}
+              <span className="text-titanium font-normal">
+                {t("headingAccent")}
+              </span>
             </h2>
           </Reveal>
 
           <Reveal delay={0.1}>
             <div>
-              {faqs.map((faq, index) => (
+              {items.map((faq, index) => (
                 <details
                   key={index}
                   className="group border-b border-border/60 py-2"

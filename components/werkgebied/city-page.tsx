@@ -1,47 +1,36 @@
-import Link from "next/link";
 import { ArrowRight, Building2, MapPin, ShieldCheck, Users } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { SiteHeader } from "@/components/sections/site-header";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { OfferteForm } from "@/components/sections/offerte-form";
 import { ServiceHero } from "@/components/service/service-hero";
-import {
-  ServiceFeatureGrid,
-  type ServiceFeature,
-} from "@/components/service/service-feature-grid";
+import { ServiceFeatureGrid } from "@/components/service/service-feature-grid";
 import { ServiceFaq } from "@/components/service/service-faq";
 import { ServiceCta } from "@/components/service/service-cta";
 import { SectionHeading } from "@/components/sections/section-heading";
+import { Link } from "@/i18n/navigation";
 import { RevealGroup, RevealItem } from "@/components/motion/reveal";
 import { contact, services } from "@/lib/site";
 import { SITE_URL, type CityArea } from "@/lib/werkgebied";
 
-function featuresFor(name: string): ServiceFeature[] {
-  return [
-    {
-      icon: MapPin,
-      title: "Lokaal aanwezig",
-      body: `Met eigen team en materieel actief in ${name} en omgeving, en inzetbaar door heel Nederland.`,
-    },
-    {
-      icon: ShieldCheck,
-      title: "VCA-gecertificeerd",
-      body: "Veilig werken op hoogte volgens de strengste richtlijnen, en volledig verzekerd.",
-    },
-    {
-      icon: Users,
-      title: "Vast, opgeleid team",
-      body: "Representatief, Nederlands sprekend personeel dat uw object door en door kent.",
-    },
-    {
-      icon: Building2,
-      title: "Eén vaste partner",
-      body: "Glas, gevel, zonnepanelen en periodiek onderhoud, alles onder één hand.",
-    },
-  ];
-}
+// Iconen blijven in code; de teksten komen uit messages onder
+// werkgebied.city.features, met {city} ingevuld per stad.
+const FEATURE_DEFS = [
+  { key: "local", icon: MapPin },
+  { key: "vca", icon: ShieldCheck },
+  { key: "team", icon: Users },
+  { key: "partner", icon: Building2 },
+] as const;
 
 export function CityPage({ city }: { city: CityArea }) {
+  const t = useTranslations();
   const path = `/werkgebied/${city.slug}`;
+
+  const features = FEATURE_DEFS.map((f) => ({
+    icon: f.icon,
+    title: t(`werkgebied.city.features.${f.key}.title`),
+    body: t(`werkgebied.city.features.${f.key}.body`, { city: city.name }),
+  }));
 
   const localBusinessLd = {
     "@context": "https://schema.org",
@@ -64,11 +53,16 @@ export function CityPage({ city }: { city: CityArea }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: t("common.nav.home"),
+        item: `${SITE_URL}/`,
+      },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Werkgebied",
+        name: t("werkgebied.navLabel"),
         item: `${SITE_URL}/werkgebied`,
       },
       {
@@ -94,8 +88,8 @@ export function CityPage({ city }: { city: CityArea }) {
       <main>
         <ServiceHero
           breadcrumb={[
-            { label: "Home", href: "/" },
-            { label: "Werkgebied", href: "/werkgebied" },
+            { label: t("common.nav.home"), href: "/" },
+            { label: t("werkgebied.navLabel"), href: "/werkgebied" },
             { label: city.name },
           ]}
           title={city.h1}
@@ -107,7 +101,7 @@ export function CityPage({ city }: { city: CityArea }) {
         {/* Lokale intro */}
         <section className="relative scroll-mt-24 py-16 sm:py-20">
           <div className="container max-w-3xl">
-            <SectionHeading title="Uw vaste partner in" accent={city.name} />
+            <SectionHeading title={t("werkgebied.city.partnerIn")} accent={city.name} />
             <div className="mt-6 space-y-4 text-base leading-relaxed text-muted-foreground">
               {city.introBody.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -120,9 +114,9 @@ export function CityPage({ city }: { city: CityArea }) {
         <section className="relative scroll-mt-24 border-y border-border/60 bg-card/20 py-16 sm:py-20">
           <div className="container">
             <SectionHeading
-              title={`Onze diensten in`}
+              title={t("werkgebied.city.servicesIn")}
               accent={city.name}
-              intro="Eén partner voor alles aan de buitenzijde van uw vastgoed."
+              intro={t("werkgebied.city.servicesIntro")}
             />
             <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {services.map((s) => (
@@ -137,10 +131,10 @@ export function CityPage({ city }: { city: CityArea }) {
                       aria-hidden
                     />
                     <h3 className="mt-4 font-display text-base font-medium text-foreground">
-                      {s.title}
+                      {t(`services.${s.id}.title`)}
                     </h3>
                     <span className="mt-3 inline-flex items-center gap-1 text-sm text-muted-foreground transition-colors group-hover:text-titanium-bright">
-                      Meer over deze dienst
+                      {t("werkgebied.city.moreAbout")}
                       <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                     </span>
                   </Link>
@@ -151,19 +145,19 @@ export function CityPage({ city }: { city: CityArea }) {
         </section>
 
         <ServiceFeatureGrid
-          heading="Waarom J. Versseput in"
+          heading={t("werkgebied.city.whyIn")}
           accent={city.name}
-          features={featuresFor(city.name)}
+          features={features}
         />
 
         <ServiceFaq
           items={city.faq}
-          heading={`Veelgestelde vragen over ${city.name}`}
+          heading={t("werkgebied.city.faqHeading", { city: city.name })}
         />
 
         <ServiceCta
-          title={`Vastgoedonderhoud in ${city.name}?`}
-          subtitle="Vraag vrijblijvend een offerte aan. Wij reageren binnen één werkdag en denken met u mee over de beste aanpak."
+          title={t("werkgebied.city.ctaTitle", { city: city.name })}
+          subtitle={t("werkgebied.city.ctaSubtitle")}
         />
 
         <div id="offerte" className="scroll-mt-24">
